@@ -41,6 +41,42 @@ paths:
 #        - $ref: '#/parameters/SortParam'
 #        - $ref: '#/parameters/PageParam'
 #        - $ref: '#/parameters/PageSizeParam'
+      x-amazon-apigateway-integration:
+        responses:
+          200:
+            statusCode: 200
+            responseTemplates:
+              application/json: >
+                #set($root = $input.path('$'))
+                #set($locale = $input.params().header.get('Accept-Language'))
+                {
+                  "stores": [
+                #foreach($store in $root.stores)
+                    {
+                      "id": "$store.id",
+                      "code": $store.code,
+                      "channel": {
+                #foreach($title in $store.channel.title)
+                #if($title.locale == $locale)
+                        "title": "$title.value",
+                #end
+                #end
+                        "id": "$store.channel.id"
+                      }
+                    }#if($foreach.hasNext),#end
+
+                #end
+                  ],
+                  "total_items": $root.total_items
+                }
+        uri: "https://denner-sts-new.frb.io/api/stores"
+        httpMethod: GET
+        requestParameters:
+          integration.request.header.App-ID: "'change-me'"
+          integration.request.header.App-Key: "'change-me'"
+          integration.request.querystring.filter: "method.request.querystring.filter"
+          integration.request.querystring.page_size: "'20'"
+        type: http
       responses:
         200:
           description: Successful listing
@@ -149,6 +185,15 @@ paths:
       parameters:
         - $ref: '#/parameters/AcceptHeader'
         - $ref: '#/parameters/AcceptLanguageHeader'
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: 200
+            responseTemplates:
+              application/json: "__passthrough__"
+        uri: "https://raw.githubusercontent.com/detailnet/denner-mobile-api-spec/master/examples/store-filters.json"
+        httpMethod: GET
+        type: http
       responses:
         200:
           description: Successful listing
