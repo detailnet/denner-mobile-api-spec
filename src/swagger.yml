@@ -611,6 +611,8 @@ paths:
                     text: "75 cl"
                   base:
                     text: "10 cl"
+                  packshot:
+                    image_url: "https://denner-assets.s3-eu-west-1.amazonaws.com/assets/5fb350dd-d3be-413b-b3de-efdb617fdcca/051273_1.png"
                   wine:
                     country:
                       id: "IT"
@@ -1767,6 +1769,8 @@ definitions:
         $ref: '#/definitions/Content'
       base:
         $ref: '#/definitions/BaseContent'
+      packshot:
+        $ref: '#/definitions/Packshot'
       wine:
         $ref: '#/definitions/ArticleWine'
 
