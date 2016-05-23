@@ -1,0 +1,18 @@
+{
+    "id": "22c75e42-95ed-53c4-bf77-e62d6a02582f",
+    "name": "denner-mobile-api apig-v1",
+    "values": [
+        {
+            "key": "base_url",
+            "value": "https://denner-mobile-api.detailnet.ch/v1",
+            "type": "text",
+            "name": "base_url",
+            "enabled": true
+        }
+    ],
+    "team": null,
+    "timestamp": 1463572016214,
+    "synced": false,
+    "syncedFilename": "",
+    "isDeleted": false
+}
