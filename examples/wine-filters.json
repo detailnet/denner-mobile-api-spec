@@ -31,10 +31,6 @@
                     "value": 2
                 },
                 {
-                    "title": "Bordeaux Grand Cru",
-                    "value": 6
-                },
-                {
                     "title": "Weisswein",
                     "value": 1
                 },
@@ -133,6 +129,26 @@
             ]
         },
         {
+            "id": "online_specials",
+            "title": "Online-Specials",
+            "type": "list",
+            "filter": {
+                "property": "f.online_specials",
+                "operator": "in",
+                "type": "array"
+            },
+            "options": [
+                {
+                    "title": "Bordeaux Grand Cru",
+                    "value": "bordeaux"
+                },
+                {
+                    "title": "Rarität",
+                    "value": "rarity"
+                }
+            ]
+        },
+        {
             "id": "price",
             "title": "Preisklasse",
             "type": "slider",
@@ -160,7 +176,7 @@
             "title": "Passend zu",
             "type": "list",
             "filter": {
-                "property": "f.fits_with",
+                "property": "f.fits_withs",
                 "operator": "in",
                 "type": "array"
             },
