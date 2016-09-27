@@ -90,6 +90,12 @@
                             "id": 2,
                             "title": "Rotwein"
                         },
+                        "online_specials": [
+                            {
+                                "id": "rarity",
+                                "title": "Rärität"
+                            }
+                        ],
                         "year": 2013,
                         "fits_with": "Pasta, Fleisch mit würzigen Saucen",
                         "varietal": "Primitivo",
