@@ -1,0 +1,321 @@
+{
+	"variables": [],
+	"info": {
+		"name": "denner-mobile-api",
+		"_postman_id": "c0734860-8e32-d965-2e84-508790cea2ab",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/featured-articles",
+			"request": {
+				"url": "{{base_url}}/featured-articles",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List featured articles"
+			},
+			"response": []
+		},
+		{
+			"name": "/online-filters/{filter_id}/online-groups",
+			"request": {
+				"url": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-groups",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List a filter's online groups"
+			},
+			"response": []
+		},
+		{
+			"name": "/online-filters/{filter_id}/online-publications",
+			"request": {
+				"url": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-publications",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List a filter's online publications"
+			},
+			"response": []
+		},
+		{
+			"name": "/online-filters",
+			"request": {
+				"url": "{{base_url}}/online-filters?type=promotion",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List online filters"
+			},
+			"response": []
+		},
+		{
+			"name": "/wines",
+			"request": {
+				"url": "{{base_url}}/wines",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List wines"
+			},
+			"response": []
+		},
+		{
+			"name": "/wines-filters",
+			"request": {
+				"url": "{{base_url}}/wine-filters",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List wine filters"
+			},
+			"response": []
+		},
+		{
+			"name": "/wines/{article_id}/appraisals",
+			"request": {
+				"url": "{{base_url}}/wines/012345/appraisals",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List a wine's appraisals"
+			},
+			"response": []
+		},
+		{
+			"name": "/wines/{article_id}/appraisals",
+			"request": {
+				"url": "{{base_url}}/wines/012345/appraisals",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"wine_year\": 2013,\r\n  \"title\": \"un très très bon vin\",\r\n  \"description\": \"mais ce n'est pas du zinfandel !! c'est du PRIMITIVO !! le cépage ORIGINAL !!! Denner, qu'est ce qui vous arrive ???\",\r\n  \"rating\": 5,\r\n  \"display_name\": \"Hans M.\",\r\n  \"city\": \"Cossonay\",\r\n  \"language\": \"fr\"\r\n}"
+				},
+				"description": "Create a wine appraisal"
+			},
+			"response": []
+		},
+		{
+			"name": "/stores",
+			"request": {
+				"url": "{{base_url}}/stores",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List stores"
+			},
+			"response": []
+		},
+		{
+			"name": "/store-filters",
+			"request": {
+				"url": "{{base_url}}/store-filters",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List store filters"
+			},
+			"response": []
+		},
+		{
+			"name": "/banners",
+			"request": {
+				"url": "{{base_url}}/banners",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "List banners"
+			},
+			"response": []
+		},
+		{
+			"name": "/sweepstake-participants",
+			"request": {
+				"url": "{{base_url}}/sweepstake-participants",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Accept-Language",
+						"value": "de",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstname\": \"Michelle\",\r\n  \"lastname\": \"Muster\",\r\n  \"address\": \"Bahnhofstrasse 7\",\r\n  \"zip_code\": \"8034\",\r\n  \"city\": \"Zurich\",\r\n  \"email\": \"email@gmx.ch\",\r\n  \"gender\": \"female\",\r\n  \"shop_user_id\": 123456789,\r\n  \"language\": \"de\"\r\n}\r\n"
+				},
+				"description": "Create a sweepstake participant"
+			},
+			"response": []
+		}
+	]
+}
