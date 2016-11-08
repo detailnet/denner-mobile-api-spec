@@ -38,7 +38,7 @@
             "name": "/wines/{article_id}/appraisals",
             "description": "Create a wine appraisal",
             "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "rawModeData": "{\r\n  \"wine_year\": 2013,\r\n  \"title\": \"un très très bon vin\",\r\n  \"description\": \"mais ce n'est pas du zinfandel !! c'est du PRIMITIVO !! le cépage ORIGINAL !!! Denner, qu'est ce qui vous arrive ???\",\r\n  \"rating\": 5,\r\n  \"display_name\": \"Hans M.\",\r\n  \"city\": \"Cossonay\",\r\n  \"language\": \"fr\"\r\n}"
+            "rawModeData": "{\r\n  \"wine_year\": 2013,\r\n  \"title\": \"un très très bon vin\",\r\n  \"description\": \"mais ce n'est pas du zinfandel !! c'est du PRIMITIVO !! Denner, qu'est ce qui vous arrive ???\",\r\n  \"rating\": 5,\r\n  \"display_name\": \"Hans M.\",\r\n  \"city\": \"Cossonay\",\r\n  \"email\": \"email@gmx.ch\",\r\n  \"gender\": \"female\",\r\n  \"language\": \"fr\"\r\n}"
         },
         {
             "id": "2fa35aed-b8f5-1381-ce4b-e9374131f465",
