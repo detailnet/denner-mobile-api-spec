@@ -39,6 +39,13 @@
                 }
             ],
             "panel": "9.- sparen",
+            "stopper": {
+                "id": "502d19d1-4d54-42ec-85c2-5e1608e4e231",
+                "type": {
+                    "id": "save_value"
+                },
+                "text": "– 9 Fr."
+            },
             "quantity": 6,
             "content": {
                 "text": "75 cl"
