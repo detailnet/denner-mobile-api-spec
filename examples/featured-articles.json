@@ -68,8 +68,18 @@
             "cooling": 0,
             "eco_labels": [
                 {
-                    "id": "66d94617-bbd7-477e-ae66-183deb67ba5b",
-                    "code": "bio"
+                    "id": "096ec6fc-2722-4907-82ef-8694b3f38240",
+                    "name": "Suisse Garantie",
+                    "image": {
+                        "cdn_url": "https://denner.imgix.net/eco-labels/096ec6fc-2722-4907-82ef-8694b3f38240/suisse-garantie.png"
+                    }
+                },
+                {
+                    "id": "920795b5-3dbf-4a56-875b-76837cd4eca3",
+                    "name": "UTZ",
+                    "image": {
+                        "cdn_url": "https://denner.imgix.net/eco-labels/920795b5-3dbf-4a56-875b-76837cd4eca3/utz.png"
+                    }
                 }
             ],
             "packshot": {
