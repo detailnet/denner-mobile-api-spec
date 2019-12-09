@@ -1,0 +1,679 @@
+openapi: "3.0.1"
+info:
+  title: "denner-mobile"
+  version: "2019-12-05T13:41:34Z"
+servers:
+- url: "https://denner-mobile-api.detailnet.ch/{basePath}"
+  variables:
+    basePath:
+      default: "/v1"
+paths:
+  /online-filters:
+    get:
+      parameters:
+      - name: "f.types"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "sort"
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content: {}
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineFilters:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "5mah0t"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        - "method.request.querystring.f.types"
+        - "method.request.querystring.sort"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /online-filters/{filter_id}/online-groups:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "filter_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineGroups:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "xogyxl"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"online_filter_id\": \"$input.params().path.get('filter_id')\",\r\
+            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        - "method.request.path.filter_id"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /online-filters/{filter_id}/online-publications:
+    get:
+      parameters:
+      - name: "f.online_group"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "filter_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlinePublications:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "upft64"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"query\": \"f.filters=$input.params().path.get('filter_id')&#foreach($paramName\
+            \ in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.querystring.f.online_group"
+        - "method.request.header.Accept-Language"
+        - "method.request.path.filter_id"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /wine-filters:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWineFilters:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "'Accept-Language'"
+              method.response.header.Vary: "stageVariables.cache_control"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "wzjy2x"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /food-matches:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:denner-mobile-api-${stageVariables.lambda_env}_listFoodMatches:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "'Accept-Language'"
+              method.response.header.Vary: "stageVariables.cache_control"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /store-filters:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStoreFilters:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "uu7ssu"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\r\
+            \n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /stores:
+    get:
+      parameters:
+      - name: "sort"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "page_size"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.open"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.channel"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "page"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.services"
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStores:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "mqzsio"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        - "method.request.querystring.page"
+        - "method.request.querystring.page_size"
+        - "method.request.querystring.sort"
+        - "method.request.querystring.f.services"
+        - "method.request.querystring.f.channel"
+        - "method.request.querystring.f.open"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /wines:
+    get:
+      parameters:
+      - name: "f.id"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.promotion_type"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.price_to"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "f.country"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.fits_with"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.price_from"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "search"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "sort"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "page_size"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.region"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.type"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "page"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.awards"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "f.barcodes"
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWines:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "'Accept-Language'"
+              method.response.header.Vary: "stageVariables.cache_control"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "r7ulbu"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"search\": \"$input.params().querystring.get('search')\",\r\n  \"\
+            query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        - "method.request.querystring.sort"
+        - "method.request.querystring.page_size"
+        - "method.request.querystring.page"
+        - "method.request.querystring.f.type"
+        - "method.request.querystring.f.region"
+        - "method.request.querystring.f.promotion_type"
+        - "method.request.querystring.f.price_to"
+        - "method.request.querystring.f.price_from"
+        - "method.request.querystring.f.id"
+        - "method.request.querystring.f.fits_with"
+        - "method.request.querystring.f.country"
+        - "method.request.querystring.f.barcodes"
+        - "method.request.querystring.f.awards"
+        - "method.request.querystring.search"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /banners:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      - name: "f.platforms"
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.banners_api}-${stageVariables.lambda_env}_listBanners:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "3eh9mc"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"serialization\": {\"group\": \"mobile-listing\"},\r\n  \"query\"\
+            : \"f.active=__bool_true&f.display_from=__dtlte_now&f.display_to=__dtgt_now&#foreach($paramName\
+            \ in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        - "method.request.querystring.f.platforms"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /featured-articles:
+    get:
+      parameters:
+      - name: "Accept-Language"
+        in: "header"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+            Vary:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listFeaturedArticles:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+              method.response.header.Vary: "'Accept-Language'"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "4eqjip"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
+            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.header.Accept-Language"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /sweepstake-participants:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Empty"
+        required: true
+      responses:
+        422:
+          description: "422 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        201:
+          description: "201 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveSweepstakeParticipant:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "201"
+          SweepstakeParticipant validation failed:
+            statusCode: "422"
+            responseTemplates:
+              application/json: "#set($inputRoot = $input.path('$'))\n{\n  \"message\"\
+                : \"Validation error\"\n}"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        requestTemplates:
+          application/json: "{\r\n  \"serialization\": {\"group\": \"mobile-listing\"\
+            },\r\n  \"participant_data\": $input.json('$')\r\n}"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+  /wines/{article_id}/appraisals:
+    get:
+      parameters:
+      - name: "page_size"
+        in: "query"
+        schema:
+          type: "string"
+      - name: "article_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      - name: "page"
+        in: "query"
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Cache-Control:
+              schema:
+                type: "string"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_listAppraisals:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Cache-Control: "stageVariables.cache_control"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "in1e07"
+        requestTemplates:
+          application/json: "#set($queryParams = $input.params().querystring)\r\n\
+            {\r\n  \"serialization\": {\"group\": \"mobile-listing\"},\r\n  \"query\"\
+            : \"f.approved=__bool_true&f.article.id=__streq_$input.params().path.get('article_id')&#foreach($paramName\
+            \ in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            \r\n}"
+        cacheKeyParameters:
+        - "method.request.path.article_id"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+    post:
+      parameters:
+      - name: "article_id"
+        in: "path"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        422:
+          description: "422 response"
+          content: {}
+        201:
+          description: "201 response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+      x-amazon-apigateway-integration:
+        uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveAppraisal:${stageVariables.lambda_alias}/invocations"
+        responses:
+          default:
+            statusCode: "201"
+          Appraisal validation failed:
+            statusCode: "422"
+            responseTemplates:
+              application/json: "#set($inputRoot = $input.path('$'))\n{\n  \"message\"\
+                : \"Validation error\"\n}"
+        passthroughBehavior: "when_no_match"
+        httpMethod: "POST"
+        cacheNamespace: "in1e07"
+        requestTemplates:
+          application/json: "{\r\n  \"serialization\": {\"group\": \"mobile-listing\"\
+            },\r\n  \"article_data\": {\r\n    \"id\": \"$input.params().path.get('article_id')\"\
+            \r\n  },\r\n  \"appraisal_data\": $input.json('$')\r\n}"
+        cacheKeyParameters:
+        - "method.request.path.article_id"
+        contentHandling: "CONVERT_TO_TEXT"
+        type: "aws"
+components:
+  schemas:
+    Empty:
+      title: "Empty Schema"
+      type: "object"
+    Error:
+      title: "Error Schema"
+      type: "object"
+      properties:
+        message:
+          type: "string"
