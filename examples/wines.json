@@ -41,6 +41,7 @@
                 "storage": "3 Jahre",
                 "rating": {
                     "value": 4.45,
+                    "stars": 4.5,
                     "total": 11,
                     "valid": true
                 },
