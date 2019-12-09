@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: RESTful API for the Denner Mobile App
-  version: 1.0.0
+  version: 1.1.0
   title: Denner Mobile Web Service
   contact:
     name: DETAIL NET
@@ -311,6 +311,7 @@ paths:
                     storage: "3 Jahre"
                     rating:
                       value: 4.45
+                      stars: 4.5
                       total: 11
                       valid: true
                     shop:
@@ -473,6 +474,7 @@ paths:
                         storage: "3 Jahre"
                         rating:
                           value: 4.45
+                          stars: 4.5
                           total: 11
                           valid: true
                         shop:
@@ -634,6 +636,7 @@ paths:
                     storage: "3 Jahre"
                     rating:
                       value: 4.45
+                      stars: 4.5
                       total: 11
                       valid: true
                     shop:
@@ -871,6 +874,427 @@ paths:
                     -
                       title: "Wine&Spirit"
                       value: "669ed4a8-88dd-457f-a3b2-de9ef31400f3"
+
+  /food-matches:
+    get:
+      summary: List wine food matches
+      description: >
+        Use this operation to get a list of all wines associated to their food-matches
+      tags:
+        - wine
+      operationId: listFoodMatches
+      parameters:
+        - $ref: '#/parameters/AcceptHeader'
+#        - $ref: '#/parameters/AcceptLanguageHeader'
+      responses:
+        200:
+          description: Successful listing
+          schema:
+            $ref: '#/definitions/FoodMatchesResponse'
+          examples:
+            application/json:
+              wines:
+                - id: 051901
+                  title: A Mano Primitivo di Puglia IGT
+                  barcodes:
+                    - '8026705101103'
+                    - '8026705106108'
+                  rating:
+                    value: 4.0801
+                    stars: 4
+                    total: 287
+                  food_matches:
+                    - id: 0c02fc6a-6e6d-4389-886d-17a5f1e92184
+                      score: 3
+                    - id: 4dd8e295-754c-4c39-aed8-7d70d9993bf8
+                      score: 2
+                    - id: c266e2b7-0388-4456-95b2-40687e5b2044
+                      score: 2
+                    - id: 7e1e0428-2773-4632-9e62-186d815f25b3
+                      score: 4
+                    - id: e23547f7-0ee4-4322-ba52-7f70acc5932f
+                      score: 4
+                    - id: 9a5eb862-13a0-401a-92c0-be2701e6aff7
+                      score: 3
+                    - id: 5a7ee753-0450-48af-b20f-d9cecf32368e
+                      score: 3
+                    - id: f9875266-d046-4ea8-b640-c8be7c78eb7e
+                      score: 3
+                    - id: 2af40c6b-7592-4d89-ac38-6c95660f1f5f
+                      score: 3
+                    - id: 6a1b7827-b4f2-4154-8d21-109e0e9e171d
+                      score: 3
+                    - id: 5f1d97ab-2479-4c99-aa3d-15cadbbc866a
+                      score: 2
+                    - id: 33e94fb1-f945-4d39-8c2d-96f235bb117e
+                      score: 2
+                    - id: aa850d1f-14a9-45cc-8194-e52fa82548ad
+                      score: 1
+                    - id: e5d304c3-19a8-42c1-aece-8eb52bf69cfe
+                      score: 1
+                    - id: be8263e9-8994-4cf2-813c-24afadb18250
+                      score: 4
+                    - id: 06e5821b-6e23-40ae-994a-99726ef72523
+                      score: 4
+                    - id: 1aabb1bd-bf34-472d-a37f-2cdba1c83f33
+                      score: 4
+                    - id: 736856b7-6b76-458b-b1c6-e879e99af9ba
+                      score: 4
+                    - id: 0cd334e6-4443-491c-8d60-85fffa5fc8f7
+                      score: 3
+                    - id: 99d95b8a-9c12-48ec-9c19-96933f55e6fa
+                      score: 3
+                    - id: c427a378-8678-47b1-a577-2291f6e40c69
+                      score: 2
+                    - id: a2c38312-1cdb-4e99-9cb8-0dfe801af4ee
+                      score: 3
+                    - id: 8db88275-57cc-4f39-bd6f-7e1c9be88ffd
+                      score: 3
+                    - id: b6727641-f3d8-4cb5-b8c3-5caa311cf3a3
+                      score: 2
+                    - id: 93acec83-12e9-4782-9f91-fde54124c8a5
+                      score: 2
+                    - id: 738e5182-bc5c-49bb-9b93-8ca8ef93a166
+                      score: 3
+                    - id: 2d20a7a3-42a6-4f33-8390-d4fb715226b2
+                      score: 3
+                    - id: 5cc84de0-3bf9-4298-b578-820cebd7b99e
+                      score: 2
+                    - id: 345d8198-9bc3-4994-829f-83fdb92f4552
+                      score: 2
+                    - id: 70366263-8f7e-432a-84a0-a721d6072ea7
+                      score: 2
+                    - id: a17dbc4b-961e-46ad-9a5c-707cb9526e72
+                      score: 4
+                    - id: b9888817-3ef7-4e90-8510-78f1af7afaa2
+                      score: 3
+                    - id: 0dc74de4-6f65-4601-bb63-f0988718b7ad
+                      score: 2
+                    - id: 98d93cd8-56c0-4c21-b900-1944fe693274
+                      score: 3
+                    - id: c03723b7-90a5-4d49-8363-e90531704a15
+                      score: 2
+                    - id: f5b73842-6faf-478d-ab2f-3889f51314b1
+                      score: 4
+                    - id: 74063e2a-7754-4964-ad20-536dc32813f8
+                      score: 4
+                    - id: 3d45aea3-654b-4c71-9f81-aeb091e4e1ba
+                      score: 3
+                    - id: 792bc977-d6aa-4b25-8b38-78753bd5e417
+                      score: 3
+                    - id: a2ab55fc-deef-4954-a597-b421add86c41
+                      score: 3
+                    - id: cfd6db2c-2f06-4986-aecf-21b8ebabce79
+                      score: 3
+                    - id: dd7adce7-31d2-4bf5-8261-e330743511ea
+                      score: 3
+                    - id: 471af13a-2780-45f5-8402-48d801bfc0cd
+                      score: 2
+                    - id: 0f1f7b20-4a89-4e8d-94e9-13a28dcdc985
+                      score: 2
+                    - id: 8ed179d3-6662-4420-994e-16675efc4ec6
+                      score: 2
+                - id: 050813
+                  title: Abbaye de Mont rouge Mont-sur-Rolle AOC
+                  barcodes:
+                    - '7611824311079'
+                    - '7611824711077'
+                  food_matches: []
+                - id: '051443'
+                  title: Ackerman Cuvée Privilège
+                  barcodes:
+                    - '3052885400175'
+                    - '3052885400571'
+                  food_matches: []
+                - id: '050754'
+                  title: Acquesi Dolce Asti DOCG
+                  barcodes:
+                    - '8056457511530'
+                    - '8056457511547'
+                  rating:
+                    value: 4.75
+                    stars: 5
+                    total: 4
+                  food_matches:
+                    - id: 4dd8e295-754c-4c39-aed8-7d70d9993bf8
+                      score: 4
+                    - id: c266e2b7-0388-4456-95b2-40687e5b2044
+                      score: 4
+                    - id: 0c02fc6a-6e6d-4389-886d-17a5f1e92184
+                      score: 2
+                    - id: 1ccc0842-d898-4f6f-9824-c18a2d4f456b
+                      score: 2
+                    - id: f9875266-d046-4ea8-b640-c8be7c78eb7e
+                      score: 2
+                    - id: 6a1b7827-b4f2-4154-8d21-109e0e9e171d
+                      score: 2
+                    - id: 33e94fb1-f945-4d39-8c2d-96f235bb117e
+                      score: 2
+                    - id: 5f1d97ab-2479-4c99-aa3d-15cadbbc866a
+                      score: 1
+                    - id: aa850d1f-14a9-45cc-8194-e52fa82548ad
+                      score: 1
+                    - id: be8263e9-8994-4cf2-813c-24afadb18250
+                      score: 4
+                    - id: 06e5821b-6e23-40ae-994a-99726ef72523
+                      score: 3
+                    - id: c427a378-8678-47b1-a577-2291f6e40c69
+                      score: 4
+                    - id: 0cd334e6-4443-491c-8d60-85fffa5fc8f7
+                      score: 2
+                    - id: 1aabb1bd-bf34-472d-a37f-2cdba1c83f33
+                      score: 2
+                    - id: 736856b7-6b76-458b-b1c6-e879e99af9ba
+                      score: 2
+                    - id: 99d95b8a-9c12-48ec-9c19-96933f55e6fa
+                      score: 2
+                    - id: 8db88275-57cc-4f39-bd6f-7e1c9be88ffd
+                      score: 3
+                    - id: 68f1e407-49cd-470f-b6f1-ddf77b0f1713
+                      score: 2
+                    - id: d91d4f29-084d-47f9-a9a0-42506a237686
+                      score: 2
+                    - id: a2c38312-1cdb-4e99-9cb8-0dfe801af4ee
+                      score: 2
+                    - id: 9ec667df-715a-4a17-bfcb-d5b5f89cf154
+                      score: 4
+                    - id: 93acec83-12e9-4782-9f91-fde54124c8a5
+                      score: 3
+                    - id: b6727641-f3d8-4cb5-b8c3-5caa311cf3a3
+                      score: 2
+                    - id: 5cc84de0-3bf9-4298-b578-820cebd7b99e
+                      score: 3
+                    - id: 738e5182-bc5c-49bb-9b93-8ca8ef93a166
+                      score: 2
+                    - id: 345d8198-9bc3-4994-829f-83fdb92f4552
+                      score: 2
+                    - id: 2d20a7a3-42a6-4f33-8390-d4fb715226b2
+                      score: 1
+                    - id: 70366263-8f7e-432a-84a0-a721d6072ea7
+                      score: 4
+                    - id: a17dbc4b-961e-46ad-9a5c-707cb9526e72
+                      score: 3
+                    - id: 0dc74de4-6f65-4601-bb63-f0988718b7ad
+                      score: 1
+                    - id: 98d93cd8-56c0-4c21-b900-1944fe693274
+                      score: 3
+                    - id: c03723b7-90a5-4d49-8363-e90531704a15
+                      score: 3
+                    - id: 3d45aea3-654b-4c71-9f81-aeb091e4e1ba
+                      score: 2
+                    - id: 792bc977-d6aa-4b25-8b38-78753bd5e417
+                      score: 2
+                    - id: 74063e2a-7754-4964-ad20-536dc32813f8
+                      score: 2
+                    - id: a2ab55fc-deef-4954-a597-b421add86c41
+                      score: 2
+                    - id: cfd6db2c-2f06-4986-aecf-21b8ebabce79
+                      score: 1
+                    - id: 471af13a-2780-45f5-8402-48d801bfc0cd
+                      score: 3
+                    - id: 0f1f7b20-4a89-4e8d-94e9-13a28dcdc985
+                      score: 3
+                    - id: 8ed179d3-6662-4420-994e-16675efc4ec6
+                      score: 2
+                    - id: dd7adce7-31d2-4bf5-8261-e330743511ea
+                      score: 1
+              food_matches:
+                - id: 4dd8e295-754c-4c39-aed8-7d70d9993bf8
+                  title: Apérohäppchen
+                  sort_index: 10
+                  wine_count: 2
+                - id: c266e2b7-0388-4456-95b2-40687e5b2044
+                  title: Salate
+                  sort_index: 20
+                  wine_count: 2
+                - id: 0c02fc6a-6e6d-4389-886d-17a5f1e92184
+                  title: Terrine
+                  sort_index: 30
+                  wine_count: 2
+                - id: 1ccc0842-d898-4f6f-9824-c18a2d4f456b
+                  title: Suppe
+                  sort_index: 40
+                  wine_count: 1
+                - id: 7e1e0428-2773-4632-9e62-186d815f25b3
+                  title: rotes Fleisch
+                  sort_index: 50
+                  wine_count: 1
+                - id: 9a5eb862-13a0-401a-92c0-be2701e6aff7
+                  title: helles Fleisch
+                  sort_index: 60
+                  wine_count: 1
+                - id: 5a7ee753-0450-48af-b20f-d9cecf32368e
+                  title: Geflügel
+                  sort_index: 65
+                  wine_count: 1
+                - id: f9875266-d046-4ea8-b640-c8be7c78eb7e
+                  title: Charcuterie
+                  sort_index: 70
+                  wine_count: 2
+                - id: 2af40c6b-7592-4d89-ac38-6c95660f1f5f
+                  title: Trockenfleisch
+                  sort_index: 80
+                  wine_count: 2
+                - id: 6a1b7827-b4f2-4154-8d21-109e0e9e171d
+                  title: Wurst
+                  sort_index: 90
+                  wine_count: 2
+                - id: e23547f7-0ee4-4322-ba52-7f70acc5932f
+                  title: Wild
+                  sort_index: 100
+                  wine_count: 1
+                - id: 5f1d97ab-2479-4c99-aa3d-15cadbbc866a
+                  title: Süsswasserfisch
+                  sort_index: 110
+                  wine_count: 2
+                - id: 33e94fb1-f945-4d39-8c2d-96f235bb117e
+                  title: Salzwasserfisch
+                  sort_index: 120
+                  wine_count: 2
+                - id: aa850d1f-14a9-45cc-8194-e52fa82548ad
+                  title: roher Fisch
+                  sort_index: 130
+                  wine_count: 2
+                - id: e5d304c3-19a8-42c1-aece-8eb52bf69cfe
+                  title: Meeresfrüchte
+                  sort_index: 140
+                  wine_count: 1
+                - id: be8263e9-8994-4cf2-813c-24afadb18250
+                  title: Tofu usw.
+                  sort_index: 150
+                  wine_count: 2
+                - id: 06e5821b-6e23-40ae-994a-99726ef72523
+                  title: Gemüse
+                  sort_index: 160
+                  wine_count: 2
+                - id: c427a378-8678-47b1-a577-2291f6e40c69
+                  title: Antipasti
+                  sort_index: 170
+                  wine_count: 2
+                - id: 0cd334e6-4443-491c-8d60-85fffa5fc8f7
+                  title: Lasagne
+                  sort_index: 180
+                  wine_count: 2
+                - id: 1aabb1bd-bf34-472d-a37f-2cdba1c83f33
+                  title: Pasta
+                  sort_index: 190
+                  wine_count: 2
+                - id: 736856b7-6b76-458b-b1c6-e879e99af9ba
+                  title: Pizza
+                  sort_index: 200
+                  wine_count: 2
+                - id: 99d95b8a-9c12-48ec-9c19-96933f55e6fa
+                  title: Risotto
+                  sort_index: 210
+                  wine_count: 2
+                - id: 68f1e407-49cd-470f-b6f1-ddf77b0f1713
+                  title: Raclette
+                  sort_index: 220
+                  wine_count: 2
+                - id: d91d4f29-084d-47f9-a9a0-42506a237686
+                  title: Käsefondue
+                  sort_index: 230
+                  wine_count: 2
+                - id: a2c38312-1cdb-4e99-9cb8-0dfe801af4ee
+                  title: Fleischfondue
+                  sort_index: 240
+                  wine_count: 2
+                - id: 8db88275-57cc-4f39-bd6f-7e1c9be88ffd
+                  title: Rösti
+                  sort_index: 250
+                  wine_count: 2
+                - id: 9ec667df-715a-4a17-bfcb-d5b5f89cf154
+                  title: Tapas
+                  sort_index: 260
+                  wine_count: 1
+                - id: b6727641-f3d8-4cb5-b8c3-5caa311cf3a3
+                  title: Paella
+                  sort_index: 270
+                  wine_count: 2
+                - id: 93acec83-12e9-4782-9f91-fde54124c8a5
+                  title: Tortilla
+                  sort_index: 280
+                  wine_count: 2
+                - id: 738e5182-bc5c-49bb-9b93-8ca8ef93a166
+                  title: Hartkäse
+                  sort_index: 290
+                  wine_count: 2
+                - id: 2d20a7a3-42a6-4f33-8390-d4fb715226b2
+                  title: würziger Käse
+                  sort_index: 300
+                  wine_count: 2
+                - id: 5cc84de0-3bf9-4298-b578-820cebd7b99e
+                  title: Weichkäse
+                  sort_index: 310
+                  wine_count: 2
+                - id: 345d8198-9bc3-4994-829f-83fdb92f4552
+                  title: Blauschimmelkäse
+                  sort_index: 320
+                  wine_count: 2
+                - id: 70366263-8f7e-432a-84a0-a721d6072ea7
+                  title: Dessert
+                  sort_index: 330
+                  wine_count: 2
+                - id: a17dbc4b-961e-46ad-9a5c-707cb9526e72
+                  title: Ratatouille
+                  sort_index: 340
+                  wine_count: 2
+                - id: b9888817-3ef7-4e90-8510-78f1af7afaa2
+                  title: Coq au vin
+                  sort_index: 350
+                  wine_count: 1
+                - id: 0dc74de4-6f65-4601-bb63-f0988718b7ad
+                  title: Moules et frites
+                  sort_index: 360
+                  wine_count: 2
+                - id: c03723b7-90a5-4d49-8363-e90531704a15
+                  title: indische Speisen
+                  sort_index: 370
+                  wine_count: 2
+                - id: 98d93cd8-56c0-4c21-b900-1944fe693274
+                  title: orientalische Speisen
+                  sort_index: 380
+                  wine_count: 2
+                - id: f5b73842-6faf-478d-ab2f-3889f51314b1
+                  title: Grilladen
+                  sort_index: 385
+                  wine_count: 1
+                - id: 3d45aea3-654b-4c71-9f81-aeb091e4e1ba
+                  title: Eintopf
+                  sort_index: 390
+                  wine_count: 2
+                - id: 792bc977-d6aa-4b25-8b38-78753bd5e417
+                  title: Gratin
+                  sort_index: 400
+                  wine_count: 2
+                - id: 74063e2a-7754-4964-ad20-536dc32813f8
+                  title: Pilzgerichte
+                  sort_index: 410
+                  wine_count: 2
+                - id: a2ab55fc-deef-4954-a597-b421add86c41
+                  title: Polenta
+                  sort_index: 420
+                  wine_count: 2
+                - id: cfd6db2c-2f06-4986-aecf-21b8ebabce79
+                  title: Hamburger
+                  sort_index: 430
+                  wine_count: 2
+                - id: 471af13a-2780-45f5-8402-48d801bfc0cd
+                  title: chinesische Speisen
+                  sort_index: 440
+                  wine_count: 2
+                - id: 0f1f7b20-4a89-4e8d-94e9-13a28dcdc985
+                  title: thailändische Speisen
+                  sort_index: 450
+                  wine_count: 2
+                - id: dd7adce7-31d2-4bf5-8261-e330743511ea
+                  title: Sushi
+                  sort_index: 460
+                  wine_count: 2
+                - id: 8ed179d3-6662-4420-994e-16675efc4ec6
+                  title: vietnamesische Speisen
+                  sort_index: 470
+                  wine_count: 2
 
   /wines/{article_id}/appraisals:
     get:
@@ -1579,7 +2003,7 @@ definitions:
         type: string
         description: Title as displayed to users (localized)
 
-  Rating:
+  BaseRating:
     type: object
     properties:
       value:
@@ -1588,14 +2012,25 @@ definitions:
         minimum: 0
         maximum: 5
         description: Rating value
+      stars:
+        type: number
+        format: float
+        minimum: 0
+        maximum: 5
+        description: Stars, rounded to the correct deciaml value
       total:
         type: integer
         format: int32
         minimum: 0
         description: Ratng count
-      valid:
-        type: boolean
-        description: Is a valid rating?
+
+  Rating:
+    allOf:
+      - $ref: '#/definitions/BaseRating'
+      - properties:
+          valid:
+            type: boolean
+            description: Is a valid rating?
 
   Stock:
     type: object
@@ -1788,6 +2223,58 @@ definitions:
         $ref: '#/definitions/Packshot'
       wine:
         $ref: '#/definitions/ArticleWine'
+
+  FoodMatch:
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/UUIDv4'
+      title:
+        type: string
+        description: Food match as displayed to users (localized)
+      sort_index:
+        type: integer
+        format: int32
+        minimum: 0
+        description: Display order of food matches
+      wine_count:
+        type: integer
+        format: int32
+        minimum: 0
+        description: Wine count having this food match
+
+  ScoredFoodMatch:
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/UUIDv4'
+      score:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 4
+        description: Score, how good the food match fits with the wine
+
+  FoodMatchWine:
+    type: object
+    properties:
+      id:
+        type: string
+        pattern: '/^\d{6}$/'
+        description: Navision article code
+      title:
+        type: string
+        description: Public title as displayed to users (localized)
+      barcodes:
+        type: array
+        items:
+          type: string
+#          pattern: '/^\d{8,13}$/'
+          description: Barcode number
+      rating:
+        $ref: '#/definitions/BaseRating'
+      food_matches:
+        $ref: '#/definitions/ScoredFoodMatches'
 
   Appraisal:
     type: object
@@ -2050,6 +2537,21 @@ definitions:
     items:
       $ref: '#/definitions/FilterSection' # Actually it can be ListFilterSection and SliderFilterSection
 
+  FoodMatchWines:
+    type: array
+    items:
+      $ref: '#/definitions/FoodMatchWine'
+
+  FoodMatches:
+    type: array
+    items:
+      $ref: '#/definitions/FoodMatch'
+
+  ScoredFoodMatches:
+    type: array
+    items:
+      $ref: '#/definitions/ScoredFoodMatch'
+
   Appraisals:
     type: array
     items:
@@ -2191,6 +2693,14 @@ definitions:
 #        format: int32
       wine_filters:
         $ref: '#/definitions/WineFilters'
+
+  FoodMatchesResponse:
+    type: object
+    properties:
+      wines:
+        $ref: '#/definitions/FoodMatchWines'
+      food_matches:
+        $ref: '#/definitions/FoodMatches'
 
   AppraisalsResponse:
     type: object
