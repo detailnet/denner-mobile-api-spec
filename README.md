@@ -19,6 +19,7 @@ The Denner Mobile Web Service provides data and functions for the Denner Mobile 
 
 * `GET /wines` (Weine, [example](examples/wines.json))
 * `GET /wine-filters` (Weinfilter, [example](examples/wine-filters.json))
+* `GET /food-matches` (Passt zu, [example](examples/food-matches.json))
 * `GET /wines/{id}/appraisals` (Weinbewertungen, [example](examples/wine-appraisals.json))
 * `POST /wines/{id}/appraisals` (Weinbewertungen, [example request](examples/wine-appraisals.post-request.json))
 
