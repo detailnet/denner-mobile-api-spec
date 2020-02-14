@@ -269,7 +269,6 @@ paths:
                         -
                           type: "image/svg+xml"
                           url: "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
-                  panel: "9.- sparen"
                   quantity: 6
                   content:
                     text: "75 cl"
@@ -432,7 +431,6 @@ paths:
                             -
                               type: "image/svg+xml"
                               url: "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
-                      panel: "9.- sparen"
                       quantity: 6
                       content:
                         text: "75 cl"
@@ -2124,9 +2122,6 @@ definitions:
           Unit price information as displayed to users (localized, e.g. "Einzelflasche: 9.90 statt 11.40")
       dots:
         $ref: '#/definitions/Dots'
-      panel:
-        type: string
-        description: Panel text as displayed to users (localized)
       quantity:
         $ref: '#/definitions/Quantity'
       content:
