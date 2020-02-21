@@ -2107,14 +2107,6 @@ definitions:
         type: string
         description: Image URL which can be used, for example, in an 'img' tag
 
-      {
-        "id": "2cfc695c-bb8b-443e-a344-8296113a9c12",
-        "type": {
-          "id": "x_percent"
-        },
-        "text": "20%"
-      },
-
   Stopper:
     type: object
     properties:
