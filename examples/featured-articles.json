@@ -41,9 +41,9 @@
             "stopper": {
                 "id": "502d19d1-4d54-42ec-85c2-5e1608e4e231",
                 "type": {
-                    "id": "save_value"
+                    "id": "x_percent"
                 },
-                "text": "– 9 Fr."
+                "text": "10%"
             },
             "quantity": 6,
             "content": {

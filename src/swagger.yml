@@ -269,6 +269,11 @@ paths:
                         -
                           type: "image/svg+xml"
                           url: "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
+                  stopper:
+                    id: "2cfc695c-bb8b-443e-a344-8296113a9c12"
+                    type:
+                      id: "x_percent"
+                    text: "10%"
                   quantity: 6
                   content:
                     text: "75 cl"
@@ -431,6 +436,11 @@ paths:
                             -
                               type: "image/svg+xml"
                               url: "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
+                      stopper:
+                        id: "2cfc695c-bb8b-443e-a344-8296113a9c12"
+                        type:
+                          id: "x_percent"
+                        text: "10%"
                       quantity: 6
                       content:
                         text: "75 cl"
@@ -2070,14 +2080,17 @@ definitions:
       id:
         $ref: '#/definitions/UUIDv4'
       type:
-        type: object
-        description: Output type
-        properties:
-          id:
-            type: string
-            description: Output type id
+        $ref: '#/definitions/OutputType'
       images:
         $ref: '#/definitions/OutputImageFormats'
+
+  OutputType:
+    type: object
+    description: Output type
+    properties:
+      id:
+        type: string
+        description: Output type id
 
   OutputImageFormats:
     type: array
@@ -2093,6 +2106,17 @@ definitions:
       url:
         type: string
         description: Image URL which can be used, for example, in an 'img' tag
+
+  Stopper:
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/UUIDv4'
+      type:
+        $ref: '#/definitions/OutputType'
+      text:
+        type: string
+        description: Stopper as displayed to users (localized)
 
   ### Online publication article
   OnlinePublicationArticle:
@@ -2122,6 +2146,14 @@ definitions:
           Unit price information as displayed to users (localized, e.g. "Einzelflasche: 9.90 statt 11.40")
       dots:
         $ref: '#/definitions/Dots'
+      stopper:
+        $ref: '#/definitions/Stopper'
+      panel:
+        type: string
+        description: >
+          Panel text as displayed to users (localized)
+          DEPRECATED: substituted by "stopper", will be removed in v2
+        #deprecated: true  # Will be available on OpenAPI 3.x definition
       quantity:
         $ref: '#/definitions/Quantity'
       content:
