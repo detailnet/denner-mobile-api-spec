@@ -1,17 +1,17 @@
 {
-    "id": "9efc1682-20ef-48e2-9a85-38c3181bd9a8",
-    "name": "denner-mobile-api cf-v1",
+    "id": "199f8226-fc80-4234-a991-7fa8ec663749",
+    "name": "denner-mobile-api apig-v2",
     "values": [
         {
             "key": "base_url",
-            "value": "https://denner-mobile-api-v1.detailnet.ch",
+            "value": "https://denner-mobile-api.detailnet.ch/v2",
             "type": "text",
             "name": "base_url",
             "enabled": true
         }
     ],
     "team": null,
-    "timestamp": 1463572026186,
+    "timestamp": 1463572016214,
     "synced": false,
     "syncedFilename": "",
     "isDeleted": false

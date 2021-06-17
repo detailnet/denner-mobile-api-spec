@@ -1,13 +1,13 @@
 openapi: "3.0.1"
 info:
-  title: "denner-mobile"
-  description: "Denner Mobile Services"
-  version: "2021-06-17T11:43:46Z"
+  title: "denner-mobile-v2"
+  description: "Denner Mobile Services V2 (for AWL)"
+  version: "2021-06-17T11:40:37Z"
 servers:
 - url: "https://denner-mobile-api.detailnet.ch/{basePath}"
   variables:
     basePath:
-      default: "/v1"
+      default: "/v2"
 paths:
   /online-filters:
     get:
@@ -36,6 +36,7 @@ paths:
                 type: "string"
           content: {}
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -56,7 +57,6 @@ paths:
         - "method.request.querystring.f.types"
         - "method.request.querystring.sort"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /online-filters/{filter_id}/online-groups:
     get:
       parameters:
@@ -84,6 +84,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineGroups:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -104,7 +105,6 @@ paths:
         - "method.request.header.Accept-Language"
         - "method.request.path.filter_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /online-filters/{filter_id}/online-publications:
     get:
       parameters:
@@ -136,6 +136,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlinePublications:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -157,7 +158,6 @@ paths:
         - "method.request.header.Accept-Language"
         - "method.request.path.filter_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wine-filters:
     get:
       parameters:
@@ -180,6 +180,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWineFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -198,7 +199,6 @@ paths:
         cacheKeyParameters:
         - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /food-matches:
     get:
       parameters:
@@ -221,6 +221,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:denner-mobile-api-${stageVariables.lambda_env}_listFoodMatches:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -234,7 +235,6 @@ paths:
             \r\n}"
         passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /store-filters:
     get:
       parameters:
@@ -257,6 +257,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStoreFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -274,7 +275,6 @@ paths:
         cacheKeyParameters:
         - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /stores:
     get:
       parameters:
@@ -321,6 +321,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStores:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -345,7 +346,6 @@ paths:
         - "method.request.querystring.f.channel"
         - "method.request.querystring.f.open"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wines:
     get:
       parameters:
@@ -424,6 +424,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWines:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -457,7 +458,6 @@ paths:
         - "method.request.querystring.f.awards"
         - "method.request.querystring.search"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /banners:
     get:
       parameters:
@@ -484,6 +484,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.banners_api}-${stageVariables.lambda_env}_listBanners:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -494,7 +495,7 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"version\": \"v1\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
             ,\r\n  \"serialization\": {\"group\": \"mobile-listing\"},\r\n  \"query\"\
             : \"f.active=__bool_true&f.display_from=__dtlte_now&f.display_to=__dtgt_now&#foreach($paramName\
             \ in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
@@ -505,7 +506,6 @@ paths:
         - "method.request.header.Accept-Language"
         - "method.request.querystring.f.platforms"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /featured-articles:
     get:
       parameters:
@@ -528,6 +528,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listFeaturedArticles:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -546,7 +547,6 @@ paths:
         cacheKeyParameters:
         - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /sweepstake-participants:
     post:
       requestBody:
@@ -569,6 +569,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveSweepstakeParticipant:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -584,7 +585,6 @@ paths:
             },\r\n  \"participant_data\": $input.json('$')\r\n}"
         passthroughBehavior: "when_no_match"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wines/{article_id}/appraisals:
     get:
       parameters:
@@ -613,6 +613,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_listAppraisals:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -631,7 +632,6 @@ paths:
         cacheKeyParameters:
         - "method.request.path.article_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
     post:
       parameters:
       - name: "article_id"
@@ -650,6 +650,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveAppraisal:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -669,7 +670,6 @@ paths:
         cacheKeyParameters:
         - "method.request.path.article_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
 components:
   schemas:
     Empty:

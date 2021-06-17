@@ -1,10 +1,10 @@
 {
-    "id": "7016c891-4421-a482-5106-d33fee25bf5d",
-    "name": "denner-mobile-api cf-v1",
+    "id": "ff86470f-2155-4757-b0ed-7b95b6318f0d",
+    "name": "denner-mobile-api apig-v2-test",
     "values": [
         {
             "key": "base_url",
-            "value": "https://denner-mobile-api-v1.detailnet.ch",
+            "value": "https://denner-mobile-api-v2.detailnet.ch",
             "type": "text",
             "name": "base_url",
             "enabled": true
