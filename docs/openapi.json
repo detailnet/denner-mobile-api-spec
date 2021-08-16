@@ -1,0 +1,2077 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Denner Mobile Web Service",
+    "description" : "RESTful API for the Denner Mobile App",
+    "contact" : {
+      "name" : "DETAIL NET",
+      "email" : "support+denner-mobile-api@detailnet.ch"
+    },
+    "version" : "2.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://denner-mobile-api-v1.detailnet.ch/"
+  } ],
+  "paths" : {
+    "/stores" : {
+      "get" : {
+        "tags" : [ "store" ],
+        "summary" : "List all stores",
+        "description" : "Use this operation to get a list of all stores (Filialen).\n",
+        "operationId" : "listStores",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        }, {
+          "name" : "f.open",
+          "in" : "query",
+          "description" : "Filter by opening, e.g. \"f.open=__in_now,20:00\" will return all stores which are open right now or today at 8:00 pm.\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "f.services",
+          "in" : "query",
+          "description" : "Filter by services, e.g. \"f.services=__in_d4d34d84-b32b-46fb-b45f-2bde4b72be81\" will return all stores which have at least one of the given services.\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "f.channel",
+          "in" : "query",
+          "description" : "Filter by channels, e.g. \"f.channel=__in_18549f95-6471-4e21-968f-8a0bf2e0f79b\" will return all stores which have one of the given channels.\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Sort the results, e.g. \"sort=name__desc\" will sort by name (Z to A)\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "description" : "The page number. Default: 1\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 1
+          }
+        }, {
+          "name" : "page_size",
+          "in" : "query",
+          "description" : "The page size. Default: 10\nTo disable pagination (when supported) send \"-1\".\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : 10
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StoresResponse"
+                },
+                "example" : {
+                  "total_stores" : 794,
+                  "stores" : [ {
+                    "id" : "bcb8a388-8998-4d08-85a6-4864199704ee",
+                    "code" : 302,
+                    "address" : "Werdstrasse",
+                    "number" : "36",
+                    "zip_code" : 8004,
+                    "canton_code" : "ZH",
+                    "city" : "Zürich",
+                    "country_code" : "CH",
+                    "phone" : "044 240 22 83",
+                    "hotline" : "0848 99 66 33",
+                    "payment_types" : [ "cash", "euro", "maestro", "post" ],
+                    "credit_card" : true,
+                    "open_from" : "1998-08-01",
+                    "renovation_from" : "2015-06-25",
+                    "renovation_to" : "2015-06-26",
+                    "latitude" : 47.3728447,
+                    "longitude" : 8.5295153,
+                    "language" : "de",
+                    "email" : "info@denner.ch",
+                    "homepage" : "http://www.denner.ch",
+                    "parking_count" : 0,
+                    "channel" : {
+                      "id" : "5d1c3dd5-35a9-4c66-ab20-3409ea640334",
+                      "title" : "Denner"
+                    },
+                    "opening_times" : [ {
+                      "weekday" : 1,
+                      "open_from" : "08:00",
+                      "open_to" : "20:00"
+                    }, {
+                      "weekday" : 2,
+                      "open_from" : "08:00",
+                      "open_to" : "20:00"
+                    }, {
+                      "weekday" : 3,
+                      "open_from" : "08:00",
+                      "open_to" : "20:00"
+                    }, {
+                      "weekday" : 4,
+                      "open_from" : "08:00",
+                      "open_to" : "20:00"
+                    }, {
+                      "weekday" : 5,
+                      "open_from" : "08:00",
+                      "open_to" : "20:00"
+                    }, {
+                      "weekday" : 6,
+                      "open_from" : "08:00",
+                      "open_to" : "12:00"
+                    }, {
+                      "weekday" : 6,
+                      "open_from" : "14:00",
+                      "open_to" : "20:00"
+                    } ],
+                    "special_opening_times" : [ {
+                      "day" : "2015-06-25",
+                      "reason" : "Umbau",
+                      "closed" : true
+                    }, {
+                      "day" : "2015-06-26",
+                      "reason" : "Umbau",
+                      "closed" : true
+                    }, {
+                      "day" : "2015-06-28",
+                      "open_from" : "10:00",
+                      "open_to" : "16:00",
+                      "reason" : "Sonntagsverkauf",
+                      "closed" : false
+                    } ],
+                    "services" : [ {
+                      "id" : "acb911fb-b7e3-480f-ab91-1109e750892a",
+                      "title" : "Humidor"
+                    }, {
+                      "id" : "d7b4925e-79f8-415f-9436-0adb4a9cc4de",
+                      "title" : "Früchte und Gemüse"
+                    }, {
+                      "id" : "57d0301a-fd5d-4dce-ab0d-75dee1d16631",
+                      "title" : "Backstation"
+                    } ]
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/store-filters" : {
+      "get" : {
+        "tags" : [ "store" ],
+        "summary" : "List all store filters",
+        "description" : "Use this operation to get a list of the store filters.",
+        "operationId" : "listStoreFilters",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/StoreFiltersResponse"
+                },
+                "example" : {
+                  "store_filters" : [ {
+                    "id" : "opening",
+                    "title" : "Öffnungszeit",
+                    "type" : "list",
+                    "filter" : {
+                      "property" : "f.open",
+                      "operator" : "in",
+                      "type" : "array"
+                    },
+                    "options" : [ {
+                      "title" : "Jetzt geöffnet",
+                      "value" : "now"
+                    }, {
+                      "title" : "Heute bis 20 Uhr geöffnet",
+                      "value" : "20:00:00"
+                    } ]
+                  }, {
+                    "id" : "services",
+                    "title" : "Besondere Sortimente",
+                    "type" : "list",
+                    "filter" : {
+                      "property" : "f.services",
+                      "operator" : "in",
+                      "type" : "array"
+                    },
+                    "options" : [ {
+                      "title" : "Humidor",
+                      "value" : "acb911fb-b7e3-480f-ab91-1109e750892a"
+                    }, {
+                      "title" : "Bordeaux Grands Crus",
+                      "value" : "85aa57ad-2bf3-48e5-a1a0-813889cbae26"
+                    }, {
+                      "title" : "Früchte und Gemüse",
+                      "value" : "d7b4925e-79f8-415f-9436-0adb4a9cc4de"
+                    }, {
+                      "title" : "Früchte und Gemüse im Offenverkauf",
+                      "value" : "47191064-ad2e-482a-a5cf-2aa32d0b8116"
+                    }, {
+                      "title" : "Backstation",
+                      "value" : "57d0301a-fd5d-4dce-ab0d-75dee1d16631"
+                    } ]
+                  }, {
+                    "id" : "channels",
+                    "title" : "Filialtyp",
+                    "type" : "list",
+                    "filter" : {
+                      "property" : "f.channel",
+                      "operator" : "in",
+                      "type" : "array"
+                    },
+                    "options" : [ {
+                      "title" : "Denner",
+                      "value" : "5d1c3dd5-35a9-4c66-ab20-3409ea640334"
+                    }, {
+                      "title" : "Denner Satellit",
+                      "value" : "18549f95-6471-4e21-968f-8a0bf2e0f79b"
+                    } ]
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/featured-articles" : {
+      "get" : {
+        "tags" : [ "promotion" ],
+        "summary" : "List the featured articles",
+        "description" : "Use this operation to get a list of all featured articles.\n",
+        "operationId" : "listFeaturedArticles",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FeaturedArticlesResponse"
+                },
+                "example" : {
+                  "featured_articles" : [ {
+                    "id" : "dfbc2b0d-0f47-4ac2-86e5-3bd4f9936ef6",
+                    "article_id" : "051273",
+                    "title" : "Mandorla Primitivo di Puglia IGT",
+                    "description" : "2013, Apulien, Italien, 6 x 75 cl",
+                    "prices" : {
+                      "sales" : 59.4,
+                      "instead" : 68.4,
+                      "base" : 1.32,
+                      "by_quantity" : [ {
+                        "quantity" : 1,
+                        "sales" : 9.9,
+                        "instead" : 11.4
+                      }, {
+                        "quantity" : 6,
+                        "sales" : 59.4,
+                        "instead" : 68.4
+                      } ]
+                    },
+                    "price_info" : "Konkurrenzvergleich",
+                    "unit_price_info" : "Einzelflasche: 9.90 statt 11.40",
+                    "dots" : [ {
+                      "id" : "d4bca729-10ad-482c-bdda-b1a1398173b5",
+                      "type" : {
+                        "id" : "semi_price_winehit"
+                      },
+                      "images" : [ {
+                        "type" : "image/svg+xml",
+                        "url" : "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
+                      } ]
+                    } ],
+                    "stopper" : {
+                      "id" : "2cfc695c-bb8b-443e-a344-8296113a9c12",
+                      "type" : {
+                        "id" : "x_percent"
+                      },
+                      "text" : "10%"
+                    },
+                    "quantity" : 6,
+                    "content" : {
+                      "text" : "75 cl"
+                    },
+                    "base" : {
+                      "text" : "10 cl"
+                    },
+                    "validity" : {
+                      "from" : "2015-06-23",
+                      "to" : "2015-06-29",
+                      "short_text" : "Gültig von 23.06.–29.06.",
+                      "long_text" : "Angebot gültig von 23.06.2015 bis 29.06.2015"
+                    },
+                    "availability_limitations" : {
+                      "region" : "Nur in der deutschen und französischen Schweiz erhältlich",
+                      "store" : "Nur in Filialen mit Frischprodukten erhältlich"
+                    },
+                    "promoted" : true,
+                    "compared" : true,
+                    "cooling" : 0,
+                    "eco_labels" : [ {
+                      "id" : "66d94617-bbd7-477e-ae66-183deb67ba5b",
+                      "code" : "bio"
+                    } ],
+                    "packshot" : {
+                      "image_url" : "https://denner-assets.s3-eu-west-1.amazonaws.com/assets/5983a33d-ac61-49a8-a836-43259e78e9d0/051273_6.png"
+                    },
+                    "wine" : {
+                      "country" : {
+                        "id" : "IT",
+                        "title" : "Italien"
+                      },
+                      "region" : {
+                        "id" : "b19c42bf-ed78-46ff-ad6f-fc688a059e6a",
+                        "title" : "Apulien"
+                      },
+                      "type" : {
+                        "id" : 2,
+                        "title" : "Rotwein"
+                      },
+                      "year" : 2013,
+                      "fits_with" : "Pasta, Fleisch mit würzigen Saucen",
+                      "varietal" : "Primitivo",
+                      "character" : "Dunkles Rubinrot. In der Nase Aromen von roten Beeren, reifen Kirschen und Brombeeren. Geschmeidig im Gaumen.",
+                      "temperature" : "16-18 °C",
+                      "awards" : "",
+                      "storage" : "3 Jahre",
+                      "rating" : {
+                        "value" : 4.45,
+                        "stars" : 4.5,
+                        "total" : 11,
+                        "valid" : true
+                      },
+                      "shop" : {
+                        "url" : "http://denner-wineshop.ch/skuredirect/051273/",
+                        "quantity" : 6,
+                        "prices" : {
+                          "sales" : 68.4,
+                          "base" : 1.52,
+                          "by_quantity" : [ {
+                            "quantity" : 1,
+                            "sales" : 11.4
+                          }, {
+                            "quantity" : 6,
+                            "sales" : 68.4
+                          } ]
+                        },
+                        "stock" : {
+                          "value" : -15,
+                          "code" : 2,
+                          "message" : "Derzeit nicht bestellbar"
+                        }
+                      }
+                    }
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/online-filters" : {
+      "get" : {
+        "tags" : [ "promotion" ],
+        "summary" : "List the online filters of a given type",
+        "description" : "Use this operation to get a list of all online filters (Angebotsfilter; e.g. \"Aktionen aktuelle Woche\" or \"Aktionen der Folgewoche\").\n",
+        "operationId" : "listOnlineFilters",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        }, {
+          "name" : "f.types",
+          "in" : "query",
+          "description" : "Type of online filters to list (supported are \"promotion\" and \"wine\"), e.g. \"f.types=__in_promotion\" will return all online filters which should be shown in the promotional area of the App (red color).\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "sort",
+          "in" : "query",
+          "description" : "Sort the results, e.g. \"sort=name__desc\" will sort by name (Z to A)\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/OnlineFiltersResponse"
+                },
+                "example" : {
+                  "online_filters" : [ {
+                    "id" : "3734ef1f-4c1a-428c-af24-7d85af7c5041",
+                    "title" : "Aktionen der Folgewoche"
+                  }, {
+                    "id" : "f5064fb7-c5d5-467e-9bdb-e5c4ed4dea6c",
+                    "title" : "Aktionen aktuelle Woche"
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/online-filters/{filter_id}/online-publications" : {
+      "get" : {
+        "tags" : [ "promotion" ],
+        "summary" : "List the online publications appearing in given online filter",
+        "description" : "Use this operation to get a list of all publications (and the contained articles) for a specific online filter (e.g. \"Wochenaktionen\" and \"Wochenend-Knaller\", which are both appearing within \"Aktionen aktuelle Woche\").\n",
+        "operationId" : "listOnlinePublicationsByOnlineFilter",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        }, {
+          "name" : "f.online_group",
+          "in" : "query",
+          "description" : "Filter by online groups, e.g. \"f.online_groups=__in_58afec5c-ece9-4b66-bc55-00d6dc1b65b8\" will return all online publications which have at least one of the given online groups.\n",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "filter_id",
+          "in" : "path",
+          "description" : "The unique identifier of an online filter",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "pattern" : "/^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$/",
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/OnlinePublicationsResponse"
+                },
+                "example" : {
+                  "online_publications" : [ {
+                    "id" : "2c8616be-07c8-4fba-83a2-ee780449ff32",
+                    "title" : "Wochenaktionen",
+                    "validity" : {
+                      "from" : "2015-06-23",
+                      "to" : "2015-06-29",
+                      "text" : "23.06.2015 bis 29.06.2015, solange Vorrat"
+                    },
+                    "articles" : [ {
+                      "id" : "dfbc2b0d-0f47-4ac2-86e5-3bd4f9936ef6",
+                      "article_id" : "051273",
+                      "title" : "Mandorla Primitivo di Puglia IGT",
+                      "description" : "2013, Apulien, Italien, 6 x 75 cl",
+                      "prices" : {
+                        "sales" : 59.4,
+                        "instead" : 68.4,
+                        "base" : 1.32,
+                        "by_quantity" : [ {
+                          "quantity" : 1,
+                          "sales" : 9.9,
+                          "instead" : 11.4
+                        }, {
+                          "quantity" : 6,
+                          "sales" : 59.4,
+                          "instead" : 68.4
+                        } ]
+                      },
+                      "price_info" : "Konkurrenzvergleich",
+                      "unit_price_info" : "Einzelflasche: 9.90 statt 11.40",
+                      "dots" : [ {
+                        "id" : "d4bca729-10ad-482c-bdda-b1a1398173b5",
+                        "type" : {
+                          "id" : "semi_price_winehit"
+                        },
+                        "images" : [ {
+                          "type" : "image/svg+xml",
+                          "url" : "https://s3-eu-west-1.amazonaws.com/denner-assets/dots/d4bca729-10ad-482c-bdda-b1a1398173b5/051273-de.svg"
+                        } ]
+                      } ],
+                      "stopper" : {
+                        "id" : "2cfc695c-bb8b-443e-a344-8296113a9c12",
+                        "type" : {
+                          "id" : "x_percent"
+                        },
+                        "text" : "10%"
+                      },
+                      "quantity" : 6,
+                      "content" : {
+                        "text" : "75 cl"
+                      },
+                      "base" : {
+                        "text" : "10 cl"
+                      },
+                      "validity" : {
+                        "from" : "2015-06-23",
+                        "to" : "2015-06-29",
+                        "short_text" : "Gültig von 23.06.–29.06.",
+                        "long_text" : "Angebot gültig von 23.06.2015 bis 29.06.2015"
+                      },
+                      "availability_limitations" : {
+                        "region" : "Nur in der deutschen und französischen Schweiz erhältlich",
+                        "store" : "Nur in Filialen mit Frischprodukten erhältlich"
+                      },
+                      "promoted" : true,
+                      "compared" : true,
+                      "cooling" : 0,
+                      "eco_labels" : [ {
+                        "id" : "66d94617-bbd7-477e-ae66-183deb67ba5b",
+                        "code" : "bio"
+                      } ],
+                      "packshot" : {
+                        "image_url" : "https://denner-assets.s3-eu-west-1.amazonaws.com/assets/5983a33d-ac61-49a8-a836-43259e78e9d0/051273_6.png"
+                      },
+                      "wine" : {
+                        "country" : {
+                          "id" : "IT",
+                          "title" : "Italien"
+                        },
+                        "region" : {
+                          "id" : "b19c42bf-ed78-46ff-ad6f-fc688a059e6a",
+                          "title" : "Apulien"
+                        },
+                        "type" : {
+                          "id" : 2,
+                          "title" : "Rotwein"
+                        },
+                        "year" : 2013,
+                        "fits_with" : "Pasta, Fleisch mit würzigen Saucen",
+                        "varietal" : "Primitivo",
+                        "character" : "Dunkles Rubinrot. In der Nase Aromen von roten Beeren, reifen Kirschen und Brombeeren. Geschmeidig im Gaumen.",
+                        "temperature" : "16-18 °C",
+                        "awards" : "",
+                        "storage" : "3 Jahre",
+                        "rating" : {
+                          "value" : 4.45,
+                          "stars" : 4.5,
+                          "total" : 11,
+                          "valid" : true
+                        },
+                        "shop" : {
+                          "url" : "http://denner-wineshop.ch/skuredirect/051273/",
+                          "quantity" : 6,
+                          "prices" : {
+                            "sales" : 68.4,
+                            "base" : 1.52,
+                            "by_quantity" : [ {
+                              "quantity" : 1,
+                              "sales" : 11.4
+                            }, {
+                              "quantity" : 6,
+                              "sales" : 68.4
+                            } ]
+                          },
+                          "stock" : {
+                            "value" : -15,
+                            "code" : 2,
+                            "message" : "Derzeit nicht bestellbar"
+                          }
+                        }
+                      }
+                    } ]
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/online-filters/{filter_id}/online-groups" : {
+      "get" : {
+        "tags" : [ "promotion" ],
+        "summary" : "List the online groups appearing in given online filter",
+        "description" : "Use this operation to get a list of all online groups (Internet-Sortimente) for a specific online filter.\n",
+        "operationId" : "listOnlineGroupsByOnlineFilter",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        }, {
+          "name" : "filter_id",
+          "in" : "path",
+          "description" : "The unique identifier of an online filter",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "pattern" : "/^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$/",
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/OnlineGroupsResponse"
+                },
+                "example" : {
+                  "online_groups" : [ {
+                    "id" : "7627150d-36bd-4867-89b2-091800a03d24",
+                    "title" : "Frischprodukte",
+                    "children" : [ {
+                      "id" : "58afec5c-ece9-4b66-bc55-00d6dc1b65b8",
+                      "title" : "Milchprodukte",
+                      "children" : [ ]
+                    }, {
+                      "id" : "e5216167-9da5-41d6-b7b3-96362b60de89",
+                      "title" : "Eier",
+                      "children" : [ ]
+                    } ]
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/banners" : {
+      "get" : {
+        "tags" : [ "banner" ],
+        "summary" : "List all banners",
+        "description" : "Use this operation to get a list of all banners.\n",
+        "operationId" : "listBanners",
+        "parameters" : [ {
+          "name" : "Accept",
+          "in" : "header",
+          "description" : "Accepted content type (supported is \"application/json\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "application/json"
+          }
+        }, {
+          "name" : "Accept-Language",
+          "in" : "header",
+          "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "default" : "de"
+          }
+        }, {
+          "name" : "User-Agent",
+          "in" : "header",
+          "description" : "User agent\n",
+          "required" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Successful listing",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BannersResponse"
+                },
+                "example" : {
+                  "banners" : [ {
+                    "id" : "73f91ae8-fa76-4f76-86d9-78f6bcd5d3ab",
+                    "types" : [ "promotion", "wine" ],
+                    "closable" : true,
+                    "position" : "top",
+                    "title" : "20% auf alle Lindt-Artikel*",
+                    "html" : "Freitag, 27. und Samstag, 28. November 2015<br>20% auf alle Lindt-Artikel* auch auf bestehende Aktionspreise!<br>*nicht mit anderen Gutscheinen und Bons kumulierbar. Solange Vorrat.",
+                    "image" : {
+                      "image_url" : "https://denner-assets.s3-eu-west-1.amazonaws.com/banners/ec63c8de-eb6d-41f4-813b-35cd6ef8631f/lindt.png"
+                    }
+                  } ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "UUIDv4" : {
+        "pattern" : "/^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$/",
+        "type" : "string",
+        "description" : "Unique identifier"
+      },
+      "Country" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "pattern" : "/^[A-Z]{2}$/",
+            "type" : "string",
+            "description" : "Country code definition from ISO 3166"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Title as displayed to users (localized)"
+          }
+        },
+        "description" : "Country"
+      },
+      "Date" : {
+        "type" : "string",
+        "description" : "Date; Format full-date of RFC3339 (http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html#anchor14)",
+        "format" : "date"
+      },
+      "Time" : {
+        "pattern" : "/^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/",
+        "type" : "string",
+        "description" : "Time; Format HH:MM:SS"
+      },
+      "DayOfWeek" : {
+        "maximum" : 6,
+        "minimum" : 0,
+        "type" : "integer",
+        "description" : "Day of week; 0 = Sunday",
+        "format" : "int32"
+      },
+      "Year" : {
+        "minimum" : 1800,
+        "type" : "integer",
+        "description" : "Year",
+        "format" : "int32"
+      },
+      "Price" : {
+        "minimum" : 0,
+        "type" : "number",
+        "description" : "Price in CHF",
+        "format" : "float"
+      },
+      "Quantity" : {
+        "minimum" : 1,
+        "type" : "integer",
+        "description" : "Quantity",
+        "format" : "int32"
+      },
+      "Cooling" : {
+        "minimum" : 0,
+        "type" : "number",
+        "description" : "Cooling type (0 = no cooling, 1 = refrigerated, 2 = frozen)",
+        "format" : "int32"
+      },
+      "Validity" : {
+        "type" : "object",
+        "properties" : {
+          "from" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "to" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "text" : {
+            "type" : "string",
+            "description" : "Validity text as displayed to users (localized)"
+          }
+        },
+        "description" : "Generic validity based on dates (from/to) and a corresponding text"
+      },
+      "ArticleValidity" : {
+        "type" : "object",
+        "properties" : {
+          "from" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "to" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "short_text" : {
+            "type" : "string",
+            "description" : "Validity text (short version) as displayed to users (localized)"
+          },
+          "long_text" : {
+            "type" : "string",
+            "description" : "Validity text (long version) as displayed to users (localized)"
+          }
+        },
+        "description" : "Article validity based on dates (from/to) and corresponding texts (short and long version)"
+      },
+      "Url" : {
+        "type" : "string",
+        "description" : "Web URL address"
+      },
+      "Phone" : {
+        "type" : "string",
+        "description" : "Formatted phone number"
+      },
+      "Filter" : {
+        "type" : "object",
+        "properties" : {
+          "property" : {
+            "type" : "string",
+            "description" : "Name of the property to filter against"
+          },
+          "operator" : {
+            "type" : "string",
+            "description" : "Operator to compare the value (e.g. \"=\")"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "Data type of the value (e.g. \"integer\")"
+          }
+        },
+        "description" : "Filter definition"
+      },
+      "SliderLimit" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "integer",
+            "description" : "Limit (value for the filter)"
+          },
+          "filter" : {
+            "$ref" : "#/components/schemas/Filter"
+          }
+        }
+      },
+      "FilterSection" : {
+        "required" : [ "id", "title", "type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Unique identifier"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Public title as displayed to users (localized)"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "Filter type (e.g. \"list\")"
+          }
+        },
+        "discriminator" : {
+          "propertyName" : "type"
+        }
+      },
+      "ListFilterSection" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/FilterSection"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "filter" : {
+              "$ref" : "#/components/schemas/ListFilterSection_filter"
+            },
+            "options" : {
+              "type" : "array",
+              "description" : "Options",
+              "items" : {
+                "$ref" : "#/components/schemas/ListFilterSection_options"
+              }
+            }
+          }
+        } ]
+      },
+      "Store" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "code" : {
+            "type" : "integer",
+            "description" : "Navision store code",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "Name"
+          },
+          "address" : {
+            "type" : "string",
+            "description" : "Street"
+          },
+          "number" : {
+            "type" : "string",
+            "description" : "Street number"
+          },
+          "zip_code" : {
+            "maximum" : 9699,
+            "minimum" : 1000,
+            "type" : "integer",
+            "description" : "Zip code",
+            "format" : "int32"
+          },
+          "city" : {
+            "type" : "string",
+            "description" : "City"
+          },
+          "canton_code" : {
+            "type" : "string",
+            "description" : "Canton (state) code"
+          },
+          "country" : {
+            "pattern" : "/^[A-Z]{2}$/",
+            "type" : "string",
+            "description" : "Country code definition from ISO 3166"
+          },
+          "phone" : {
+            "$ref" : "#/components/schemas/Phone"
+          },
+          "hotline" : {
+            "$ref" : "#/components/schemas/Phone"
+          },
+          "payment_types" : {
+            "type" : "array",
+            "description" : "Payment types",
+            "items" : {
+              "$ref" : "#/components/schemas/PaymentType"
+            }
+          },
+          "credit_card" : {
+            "type" : "boolean",
+            "description" : "Credit card can be used for payments?"
+          },
+          "open_from" : {
+            "type" : "string",
+            "description" : "Opening on",
+            "format" : "date"
+          },
+          "open_to" : {
+            "type" : "string",
+            "description" : "Closing on",
+            "format" : "date"
+          },
+          "renovation_from" : {
+            "type" : "string",
+            "description" : "Renovation starting on",
+            "format" : "date"
+          },
+          "renovation_to" : {
+            "type" : "string",
+            "description" : "Renovation ending on",
+            "format" : "date"
+          },
+          "flyers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/StoreFlyer"
+            }
+          },
+          "longitude" : {
+            "type" : "number",
+            "description" : "Geographic longitude",
+            "format" : "float"
+          },
+          "latitude" : {
+            "type" : "number",
+            "description" : "Geographic latitude",
+            "format" : "float"
+          },
+          "language" : {
+            "type" : "string",
+            "description" : "Language spoken in the store"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "Email address"
+          },
+          "homepage" : {
+            "$ref" : "#/components/schemas/Url"
+          },
+          "parking_count" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Reserved parking places for customers",
+            "format" : "int32"
+          },
+          "channel" : {
+            "$ref" : "#/components/schemas/StoreChannel"
+          },
+          "opening_times" : {
+            "type" : "array",
+            "description" : "Default opening times",
+            "items" : {
+              "$ref" : "#/components/schemas/OpeningTime"
+            }
+          },
+          "special_opening_times" : {
+            "type" : "array",
+            "description" : "Special opening times",
+            "items" : {
+              "$ref" : "#/components/schemas/SpecialOpeningTime"
+            }
+          },
+          "calendar_opening_times" : {
+            "type" : "array",
+            "description" : "Calendar opening times",
+            "items" : {
+              "$ref" : "#/components/schemas/CalendarOpeningTime"
+            }
+          },
+          "weekly_opening_days" : {
+            "maxItems" : 7,
+            "minItems" : 7,
+            "type" : "array",
+            "description" : "Weekly opening days, exact opening plan for the week. Items are sorted for correct display.",
+            "items" : {
+              "$ref" : "#/components/schemas/WeeklyOpeningDay"
+            }
+          },
+          "services" : {
+            "type" : "array",
+            "description" : "Services provided by the store",
+            "items" : {
+              "$ref" : "#/components/schemas/StoreService"
+            }
+          }
+        }
+      },
+      "PaymentType" : {
+        "pattern" : "/^(cash|euro|maestro|post\")$/",
+        "type" : "string",
+        "description" : "Payment type"
+      },
+      "OpeningTime" : {
+        "type" : "object",
+        "properties" : {
+          "weekday" : {
+            "$ref" : "#/components/schemas/DayOfWeek"
+          },
+          "open_from" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "open_to" : {
+            "$ref" : "#/components/schemas/Time"
+          }
+        }
+      },
+      "SpecialOpeningTime" : {
+        "type" : "object",
+        "properties" : {
+          "day" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "open_from" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "open_to" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "reason" : {
+            "type" : "string",
+            "description" : "Reason for the special opening as displayed to users (localized)"
+          },
+          "closed" : {
+            "type" : "boolean",
+            "description" : "Is the store closed on this day?"
+          }
+        }
+      },
+      "CalendarOpeningTime" : {
+        "type" : "object",
+        "properties" : {
+          "day" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "open_from" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "open_to" : {
+            "$ref" : "#/components/schemas/Time"
+          }
+        }
+      },
+      "WeeklyOpeningDay" : {
+        "type" : "object",
+        "properties" : {
+          "day" : {
+            "$ref" : "#/components/schemas/Date"
+          },
+          "weekday" : {
+            "$ref" : "#/components/schemas/DayOfWeek"
+          },
+          "statements" : {
+            "minItems" : 1,
+            "type" : "array",
+            "description" : "Statements for the current day. Items are sorted for correct display.",
+            "items" : {
+              "$ref" : "#/components/schemas/DayOpeningStatement"
+            }
+          }
+        }
+      },
+      "DayOpeningStatement" : {
+        "type" : "object",
+        "properties" : {
+          "open_from" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "open_to" : {
+            "$ref" : "#/components/schemas/Time"
+          },
+          "text_override" : {
+            "type" : "string",
+            "description" : "Closure text, instead of open form/to (localized)"
+          },
+          "superseded" : {
+            "type" : "boolean",
+            "description" : "Is the statement striked out?"
+          },
+          "change_info" : {
+            "type" : "string",
+            "description" : "Tooltip info, the reason for the change (localized)"
+          }
+        }
+      },
+      "StoreChannel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Channel title"
+          }
+        }
+      },
+      "StoreService" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Service title"
+          }
+        }
+      },
+      "StoreFlyer" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "expired" : {
+            "type" : "boolean",
+            "description" : "Is the flyer expired?"
+          },
+          "url" : {
+            "$ref" : "#/components/schemas/Url"
+          },
+          "sort_index" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Display order of store flyer",
+            "format" : "int32"
+          }
+        }
+      },
+      "EcoLabel" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "code" : {
+            "type" : "string",
+            "description" : "Navision identification code"
+          }
+        }
+      },
+      "ArticlePrices" : {
+        "type" : "object",
+        "properties" : {
+          "sales" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "instead" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "base" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "by_quantity" : {
+            "$ref" : "#/components/schemas/QuantityPrices"
+          }
+        }
+      },
+      "QuantityPrices" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/QuantityPrice"
+        }
+      },
+      "QuantityPrice" : {
+        "type" : "object",
+        "properties" : {
+          "quantity" : {
+            "$ref" : "#/components/schemas/Quantity"
+          },
+          "sales" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "instead" : {
+            "$ref" : "#/components/schemas/Price"
+          }
+        }
+      },
+      "Content" : {
+        "type" : "object",
+        "properties" : {
+          "text" : {
+            "type" : "string",
+            "description" : "Article content as displayed to users (localized, e.g. \"75 cl\")"
+          }
+        }
+      },
+      "BaseContent" : {
+        "type" : "object",
+        "properties" : {
+          "text" : {
+            "type" : "string",
+            "description" : "Article base content as displayed to users (localized, e.g. \"10 cl\")"
+          }
+        }
+      },
+      "Packshot" : {
+        "type" : "object",
+        "properties" : {
+          "image_url" : {
+            "$ref" : "#/components/schemas/Url"
+          }
+        }
+      },
+      "ArticleWine" : {
+        "type" : "object",
+        "properties" : {
+          "country" : {
+            "$ref" : "#/components/schemas/Country"
+          },
+          "region" : {
+            "$ref" : "#/components/schemas/Region"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/WineType"
+          },
+          "year" : {
+            "$ref" : "#/components/schemas/Year"
+          },
+          "fits_with" : {
+            "type" : "string"
+          },
+          "varietal" : {
+            "type" : "string"
+          },
+          "character" : {
+            "type" : "string"
+          },
+          "temperature" : {
+            "type" : "string"
+          },
+          "awards" : {
+            "type" : "string"
+          },
+          "storage" : {
+            "type" : "string"
+          },
+          "rating" : {
+            "$ref" : "#/components/schemas/Rating"
+          },
+          "shop" : {
+            "$ref" : "#/components/schemas/ShopInfo"
+          }
+        }
+      },
+      "Region" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Title as displayed to users (localized)"
+          }
+        }
+      },
+      "WineType" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Navision wine type code",
+            "format" : "int32"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Title as displayed to users (localized)"
+          }
+        }
+      },
+      "BaseRating" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "maximum" : 5,
+            "minimum" : 0,
+            "type" : "number",
+            "description" : "Rating value",
+            "format" : "float"
+          },
+          "stars" : {
+            "maximum" : 5,
+            "minimum" : 0,
+            "type" : "number",
+            "description" : "Stars, rounded to the correct deciaml value",
+            "format" : "float"
+          },
+          "total" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Ratng count",
+            "format" : "int32"
+          }
+        }
+      },
+      "Rating" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BaseRating"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "valid" : {
+              "type" : "boolean",
+              "description" : "Is a valid rating?"
+            }
+          }
+        } ]
+      },
+      "Stock" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "integer",
+            "description" : "Navision stock count, might be negative",
+            "format" : "int32"
+          },
+          "code" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Navision stock code",
+            "format" : "int32"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "Stock information as displayed to users (localized)"
+          }
+        }
+      },
+      "ShopInfo" : {
+        "type" : "object",
+        "properties" : {
+          "url" : {
+            "$ref" : "#/components/schemas/Url"
+          },
+          "quantity" : {
+            "$ref" : "#/components/schemas/Quantity"
+          },
+          "prices" : {
+            "$ref" : "#/components/schemas/ArticlePrices"
+          },
+          "stock" : {
+            "$ref" : "#/components/schemas/Stock"
+          }
+        }
+      },
+      "Dots" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Output"
+        }
+      },
+      "Output" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/OutputType"
+          },
+          "images" : {
+            "$ref" : "#/components/schemas/OutputImageFormats"
+          }
+        }
+      },
+      "OutputType" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Output type id"
+          }
+        },
+        "description" : "Output type"
+      },
+      "OutputImageFormats" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/OutputImageFormat"
+        }
+      },
+      "OutputImageFormat" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "description" : "Mime type for the output image"
+          },
+          "url" : {
+            "type" : "string",
+            "description" : "Image URL which can be used, for example, in an 'img' tag"
+          }
+        }
+      },
+      "Stopper" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/OutputType"
+          },
+          "text" : {
+            "type" : "string",
+            "description" : "Stopper as displayed to users (localized)"
+          }
+        }
+      },
+      "OnlinePublicationArticle" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "article_id" : {
+            "pattern" : "/^\\d{6}$/",
+            "type" : "string",
+            "description" : "Navision article code"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Public title as displayed to users (localized)"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "Public description as displayed to users (localized)"
+          },
+          "prices" : {
+            "$ref" : "#/components/schemas/ArticlePrices"
+          },
+          "price_info" : {
+            "type" : "string",
+            "description" : "Price information as displayed to users (localized, e.g. \"Konkurrenzvergleich\")\n"
+          },
+          "unit_price_info" : {
+            "type" : "string",
+            "description" : "Unit price information as displayed to users (localized, e.g. \"Einzelflasche: 9.90 statt 11.40\")\n"
+          },
+          "dots" : {
+            "$ref" : "#/components/schemas/Dots"
+          },
+          "stopper" : {
+            "$ref" : "#/components/schemas/Stopper"
+          },
+          "panel" : {
+            "type" : "string",
+            "description" : "Panel text as displayed to users (localized) DEPRECATED: substituted by \"stopper\", will be removed in v2\n"
+          },
+          "quantity" : {
+            "$ref" : "#/components/schemas/Quantity"
+          },
+          "content" : {
+            "$ref" : "#/components/schemas/Content"
+          },
+          "base" : {
+            "$ref" : "#/components/schemas/BaseContent"
+          },
+          "validity" : {
+            "$ref" : "#/components/schemas/ArticleValidity"
+          },
+          "availability_limitations" : {
+            "$ref" : "#/components/schemas/OnlinePublicationArticle_availability_limitations"
+          },
+          "promoted" : {
+            "type" : "boolean",
+            "description" : "Is it a promoted article (should be displayed with full information)?"
+          },
+          "compared" : {
+            "type" : "boolean",
+            "description" : "Is the article's price compared to an offer from an other company?"
+          },
+          "cooling" : {
+            "$ref" : "#/components/schemas/Cooling"
+          },
+          "eco_labels" : {
+            "$ref" : "#/components/schemas/EcoLabels"
+          },
+          "packshot" : {
+            "$ref" : "#/components/schemas/Packshot"
+          },
+          "wine" : {
+            "$ref" : "#/components/schemas/ArticleWine"
+          }
+        }
+      },
+      "FeaturedArticle" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/OnlinePublicationArticle"
+        } ]
+      },
+      "OnlinePublication" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Public title as displayed to users (localized)"
+          },
+          "validity" : {
+            "$ref" : "#/components/schemas/Validity"
+          },
+          "articles" : {
+            "$ref" : "#/components/schemas/OnlinePublicationArticles"
+          }
+        }
+      },
+      "OnlineFilter" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Public title as displayed to users (localized)"
+          }
+        }
+      },
+      "OnlineGroup" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Public title as displayed to users (localized)"
+          },
+          "children" : {
+            "$ref" : "#/components/schemas/OnlineGroups"
+          }
+        }
+      },
+      "Banner" : {
+        "required" : [ "title", "types" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "$ref" : "#/components/schemas/UUIDv4"
+          },
+          "types" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "closable" : {
+            "type" : "boolean",
+            "description" : "Can the user close the banner?"
+          },
+          "position" : {
+            "type" : "string",
+            "description" : "Where the banner is shown in the UI"
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "Title as shown to the user (localized)"
+          },
+          "html" : {
+            "type" : "string",
+            "description" : "Text as shown to the user (localized)"
+          },
+          "link" : {
+            "$ref" : "#/components/schemas/Url"
+          },
+          "image" : {
+            "$ref" : "#/components/schemas/Banner_image"
+          }
+        }
+      },
+      "Stores" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Store"
+        }
+      },
+      "StoreFilters" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/ListFilterSection"
+        }
+      },
+      "EcoLabels" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/EcoLabel"
+        }
+      },
+      "OnlinePublicationArticles" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/OnlinePublicationArticle"
+        }
+      },
+      "OnlinePublications" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/OnlinePublication"
+        }
+      },
+      "OnlineFilters" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/OnlineFilter"
+        }
+      },
+      "OnlineGroups" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/OnlineGroup"
+        }
+      },
+      "Banners" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/Banner"
+        }
+      },
+      "FeaturedArticles" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/FeaturedArticle"
+        }
+      },
+      "StoresResponse" : {
+        "type" : "object",
+        "properties" : {
+          "total_stores" : {
+            "type" : "integer",
+            "description" : "The number of items on all pages",
+            "format" : "int32"
+          },
+          "stores" : {
+            "$ref" : "#/components/schemas/Stores"
+          }
+        }
+      },
+      "StoreFiltersResponse" : {
+        "type" : "object",
+        "properties" : {
+          "store_filters" : {
+            "$ref" : "#/components/schemas/StoreFilters"
+          }
+        }
+      },
+      "OnlineFiltersResponse" : {
+        "type" : "object",
+        "properties" : {
+          "online_filters" : {
+            "$ref" : "#/components/schemas/OnlineFilters"
+          }
+        }
+      },
+      "OnlineGroupsResponse" : {
+        "type" : "object",
+        "properties" : {
+          "online_groups" : {
+            "$ref" : "#/components/schemas/OnlineGroups"
+          }
+        }
+      },
+      "OnlinePublicationsResponse" : {
+        "type" : "object",
+        "properties" : {
+          "online_publications" : {
+            "$ref" : "#/components/schemas/OnlinePublications"
+          }
+        }
+      },
+      "BannersResponse" : {
+        "type" : "object",
+        "properties" : {
+          "banners" : {
+            "$ref" : "#/components/schemas/Banners"
+          }
+        }
+      },
+      "FeaturedArticlesResponse" : {
+        "type" : "object",
+        "properties" : {
+          "featured_articles" : {
+            "$ref" : "#/components/schemas/FeaturedArticles"
+          }
+        }
+      },
+      "ListFilterSection_filter" : {
+        "type" : "object",
+        "properties" : {
+          "property" : {
+            "type" : "string",
+            "description" : "Name of the property to filter against"
+          },
+          "operator" : {
+            "type" : "string",
+            "description" : "Operator to compare the value (e.g. \"=\")"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "Data type of the value (e.g. \"integer\")"
+          }
+        }
+      },
+      "ListFilterSection_options" : {
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string",
+            "description" : "Public title of the option as displayed to users (localized)"
+          },
+          "value" : {
+            "type" : "string",
+            "description" : "Value to filter against"
+          }
+        }
+      },
+      "OnlinePublicationArticle_availability_limitations" : {
+        "type" : "object",
+        "properties" : {
+          "region" : {
+            "type" : "string",
+            "description" : "Region availability as displayed to users (localized)"
+          },
+          "store" : {
+            "type" : "string",
+            "description" : "Store availability as displayed to users (localized)"
+          }
+        },
+        "description" : "Texts for information about limited availability"
+      },
+      "Banner_image" : {
+        "type" : "object",
+        "properties" : {
+          "image_url" : {
+            "$ref" : "#/components/schemas/Url"
+          }
+        }
+      }
+    },
+    "parameters" : {
+      "PageParam" : {
+        "name" : "page",
+        "in" : "query",
+        "description" : "The page number. Default: 1\n",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "minimum" : 0,
+          "type" : "integer",
+          "format" : "int32",
+          "default" : 1
+        }
+      },
+      "PageSizeParam" : {
+        "name" : "page_size",
+        "in" : "query",
+        "description" : "The page size. Default: 10\nTo disable pagination (when supported) send \"-1\".\n",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "format" : "int32",
+          "default" : 10
+        }
+      },
+      "SortParam" : {
+        "name" : "sort",
+        "in" : "query",
+        "description" : "Sort the results, e.g. \"sort=name__desc\" will sort by name (Z to A)\n",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "OnlineFilterIdPathParam" : {
+        "name" : "filter_id",
+        "in" : "path",
+        "description" : "The unique identifier of an online filter",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "pattern" : "/^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$/",
+          "type" : "string"
+        }
+      },
+      "ArticleIdPathParam" : {
+        "name" : "article_id",
+        "in" : "path",
+        "description" : "The unique identifier of an article",
+        "required" : true,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "pattern" : "/^\\d{6}$/",
+          "type" : "string"
+        }
+      },
+      "SearchParam" : {
+        "name" : "search",
+        "in" : "query",
+        "description" : "Search text",
+        "required" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "AcceptHeader" : {
+        "name" : "Accept",
+        "in" : "header",
+        "description" : "Accepted content type (supported is \"application/json\")\n",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "default" : "application/json"
+        }
+      },
+      "AcceptLanguageHeader" : {
+        "name" : "Accept-Language",
+        "in" : "header",
+        "description" : "Accepted locale (supported are \"de\", \"fr\", and \"it\")\n",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "default" : "de"
+        }
+      },
+      "ContentTypeHeader" : {
+        "name" : "Content-Type",
+        "in" : "header",
+        "description" : "Request body content type (supported is \"application/json\")\n",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string",
+          "default" : "application/json"
+        }
+      },
+      "UserAgentHeader" : {
+        "name" : "User-Agent",
+        "in" : "header",
+        "description" : "User agent\n",
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  "x-original-swagger-version" : "2.0"
+}
