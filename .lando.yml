@@ -1,0 +1,11 @@
+name: denner-mobile-api-spec
+
+proxy:
+  appserver:
+    - denner-mobile-api-spec.detailnet.me
+
+services:
+  appserver:
+    type: apache
+    webroot: docs
+
