@@ -6,7 +6,16 @@ info:
   contact:
     name: DETAIL NET
     email: support+denner-mobile-api@detailnet.ch
-host: denner-mobile-api-v1.detailnet.ch
+host: denner-mobile-api-v2.detailnet.ch
+# In Swagger definition is not possible to define multiple servers/hosts/basepth (ref https://swagger.io/docs/specification/2-0/api-host-and-base-path/)
+#on migration to OpenApi standard, define servers:
+#servers:
+#  - url: https://denner-mobile-api/v2-test
+#    description: ApiGateway test
+#  - url: https://denner-mobile-api/v2
+#    description: ApiGateway (production)
+#  - url: https://denner-mobile-api-v2.detailnet.ch
+#    description: ClodFront (production)
 schemes:
   - https
 consumes:
