@@ -9,16 +9,24 @@ info:
 # In Swagger definition is not possible to define multiple servers/hosts/basepth (ref https://swagger.io/docs/specification/2-0/api-host-and-base-path/)
 #on migration to OpenApi standard, define servers:
 #servers:
-#  - url: https://denner-mobile-api/v2-test
-#    description: ApiGateway test
-#  - url: https://denner-mobile-api/v2
-#    description: ApiGateway (production)
+#  - url: https://denner-mobile-api.detailnet.ch/{apiGatewayPath}
+#    description: ApiGateway (every request is submitted to the respective Lambda function)
+#    variables:
+#      apiGatewayPath
+#        enum:
+#          - v2-test
+#          - v2
+#          - v1-test
+#          - v1
+#        default: v2-test,
+#        description: ApiGateway path
 #  - url: https://denner-mobile-api-v2.detailnet.ch
-#    description: ClodFront (production)
-
+#    description: "CloudFront distribution for V2 (cache 1h)
+#  - url: https://denner-mobile-api-v1.detailnet.ch
+#    description: CloudFront distribution for V1 (cache 1h)
 # Because AWL will use DENNER CPI, the ClodFront deployment for V2 will never be used, therefore giving API gateway route
 host: denner-mobile-api.detailnet.ch
-basePath: /v2
+basePath: /v2-test
 schemes:
   - https
 consumes:

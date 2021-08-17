@@ -10,7 +10,21 @@
     "version" : "2.0.0"
   },
   "servers" : [ {
-    "url" : "https://denner-mobile-api.detailnet.ch/v2"
+    "url" : "https://denner-mobile-api.detailnet.ch/{apiGatewayPath}",
+    "variables": {
+      "apiGatewayPath": {
+        "enum": ["v2-test", "v2", "v1-test", "v1"],
+        "default": "v2-test",
+        "description": "ApiGateway path"
+      }
+    },
+    "description": "ApiGateway (every request is submitted to the respective Lambda function)"
+  }, {
+    "url" : "https://denner-mobile-api-v2.detailnet.ch",
+    "description": "CloudFront distribution for V2 (cache 1h)"
+  }, {
+      "url" : "https://denner-mobile-api-v1.detailnet.ch",
+      "description": "CloudFront distribution for V1 (cache 1h)"
   } ],
   "paths" : {
     "/stores" : {
