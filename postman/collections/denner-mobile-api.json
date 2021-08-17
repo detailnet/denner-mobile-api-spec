@@ -1,256 +1,395 @@
 {
-    "id": "c0734860-8e32-d965-2e84-508790cea2ab",
-    "name": "denner-mobile-api",
-    "description": null,
-    "order": [
-        "69be9758-34e7-0ee5-12f4-e0f192c4e61a",
-        "cf502120-34c9-ad7b-3b5f-ac8c7c7ddb2e",
-        "d3fff2a4-54ca-ed8d-b7e9-fd78ec28aeeb",
-        "355c4e1c-46b6-3bb1-1f82-26482b9b2922",
-        "d3e4762c-0933-066d-935e-082899bb3298",
-        "4d1d4813-3f61-d582-5b4b-f6f7c13f8703",
-        "f7d365a3-8238-6006-0a67-bcad63327f64",
-        "06e0377f-9476-1df8-d968-e2eed213b498",
-        "443a2eee-5109-54c7-edcd-5368881c3afa",
-        "af587329-e1db-0dc8-da13-e9f47ad68c51",
-        "2fa35aed-b8f5-1381-ce4b-e9374131f465",
-        "b4b167ec-4ca6-12ba-ab55-6931ba7c2981"
-    ],
-    "folders": [],
-    "timestamp": 0,
-    "owner": "37929",
-    "remoteLink": null,
-    "public": false,
-    "requests": [
+    "info": {
+        "_postman_id": "e995226d-8567-ee4b-2bf0-dbce8392c83b",
+        "name": "denner-mobile-api",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
         {
-            "id": "06e0377f-9476-1df8-d968-e2eed213b498",
-            "headers": "Accept: application/json\nAccept-Language: de\nContent-Type: application/json\n",
-            "url": "{{base_url}}/wines/012345/appraisals",
-            "preRequestScript": "",
-            "pathVariables": {},
-            "method": "POST",
-            "data": [],
-            "dataMode": "raw",
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "time": 1462802825452,
-            "name": "/wines/{article_id}/appraisals",
-            "description": "Create a wine appraisal",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "rawModeData": "{\r\n  \"wine_year\": 2013,\r\n  \"title\": \"un très très bon vin\",\r\n  \"description\": \"mais ce n'est pas du zinfandel !! c'est du PRIMITIVO !! Denner, qu'est ce qui vous arrive ???\",\r\n  \"rating\": 5,\r\n  \"display_name\": \"Hans M.\",\r\n  \"city\": \"Cossonay\",\r\n  \"email\": \"email@gmx.ch\",\r\n  \"gender\": \"female\",\r\n  \"language\": \"fr\"\r\n}"
+            "name": "OLD V1 only",
+            "item": [
+                {
+                    "name": "/wines",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/wines",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wines"
+                            ]
+                        },
+                        "description": "List wines"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/wines-filters",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/wine-filters",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wine-filters"
+                            ]
+                        },
+                        "description": "List wine filters"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/food-matches",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/food-matches",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "food-matches"
+                            ]
+                        },
+                        "description": "List food matches"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/wines/{article_id}/appraisals",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/wines/012345/appraisals",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wines",
+                                "012345",
+                                "appraisals"
+                            ]
+                        },
+                        "description": "List a wine's appraisals"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/wines/{article_id}/appraisals",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"wine_year\": 2013,\r\n  \"title\": \"un très très bon vin\",\r\n  \"description\": \"mais ce n'est pas du zinfandel !! c'est du PRIMITIVO !! le cépage ORIGINAL !!! Denner, qu'est ce qui vous arrive ???\",\r\n  \"rating\": 5,\r\n  \"display_name\": \"Hans M.\",\r\n  \"city\": \"Cossonay\",\r\n  \"language\": \"fr\"\r\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/wines/012345/appraisals",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "wines",
+                                "012345",
+                                "appraisals"
+                            ]
+                        },
+                        "description": "Create a wine appraisal"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/sweepstake-participants",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept-Language",
+                                "value": "de"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"firstname\": \"Michelle\",\r\n  \"lastname\": \"Muster\",\r\n  \"address\": \"Bahnhofstrasse 7\",\r\n  \"zip_code\": \"8034\",\r\n  \"city\": \"Zurich\",\r\n  \"email\": \"email@gmx.ch\",\r\n  \"gender\": \"female\",\r\n  \"shop_user_id\": 123456789,\r\n  \"language\": \"de\"\r\n}\r\n"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/sweepstake-participants",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "sweepstake-participants"
+                            ]
+                        },
+                        "description": "Create a sweepstake participant"
+                    },
+                    "response": []
+                }
+            ]
         },
         {
-            "id": "2fa35aed-b8f5-1381-ce4b-e9374131f465",
-            "name": "/banners",
-            "dataMode": "params",
-            "data": [],
-            "rawModeData": null,
-            "descriptionFormat": "html",
-            "description": "List banners",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "method": "GET",
-            "pathVariables": {},
-            "url": "{{base_url}}/banners",
-            "preRequestScript": "",
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": "{}",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "isFromCollection": true,
-            "folder": null
-        },
-        {
-            "id": "355c4e1c-46b6-3bb1-1f82-26482b9b2922",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/online-filters?type=promotion",
-            "preRequestScript": "",
-            "pathVariables": {},
-            "method": "GET",
-            "data": [],
-            "dataMode": "params",
-            "version": 2,
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "time": 1453128509768,
-            "name": "/online-filters",
-            "description": "List online filters",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "responses": []
-        },
-        {
-            "id": "443a2eee-5109-54c7-edcd-5368881c3afa",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/stores",
-            "preRequestScript": "",
-            "pathVariables": {},
-            "method": "GET",
-            "data": [],
-            "dataMode": "params",
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "time": 1464005981236,
-            "name": "/stores",
-            "description": "List stores",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab"
-        },
-        {
-            "id": "4d1d4813-3f61-d582-5b4b-f6f7c13f8703",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/wine-filters",
-            "pathVariables": {},
-            "preRequestScript": "",
-            "method": "GET",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "data": [],
-            "dataMode": "params",
-            "name": "/wines-filters",
-            "description": "List wine filters",
-            "descriptionFormat": "html",
-            "time": 1453128623627,
-            "version": 2,
-            "responses": [],
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {}
-        },
-        {
-            "id": "69be9758-34e7-0ee5-12f4-e0f192c4e61a",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/featured-articles",
-            "pathVariables": {},
-            "preRequestScript": "",
-            "method": "GET",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "data": [],
-            "dataMode": "params",
             "name": "/featured-articles",
-            "description": "List featured articles",
-            "descriptionFormat": "html",
-            "time": 1453128581350,
-            "version": 2,
-            "responses": [],
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {}
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/featured-articles",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "featured-articles"
+                    ]
+                },
+                "description": "List featured articles"
+            },
+            "response": []
         },
         {
-            "folder": null,
-            "id": "af587329-e1db-0dc8-da13-e9f47ad68c51",
-            "name": "/store-filters",
-            "dataMode": "params",
-            "data": [],
-            "rawModeData": null,
-            "descriptionFormat": "html",
-            "description": "List store filters",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "method": "GET",
-            "pathVariables": {},
-            "url": "{{base_url}}/store-filters",
-            "preRequestScript": "",
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab"
-        },
-        {
-            "id": "b4b167ec-4ca6-12ba-ab55-6931ba7c2981",
-            "headers": "Accept: application/json\nAccept-Language: de\nContent-Type: application/json\n",
-            "url": "{{base_url}}/sweepstake-participants",
-            "preRequestScript": "",
-            "pathVariables": {},
-            "method": "POST",
-            "data": [],
-            "dataMode": "raw",
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "time": 1464006105650,
-            "name": "/sweepstake-participants",
-            "description": "Create a sweepstake participant",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "responses": [],
-            "rawModeData": "{\r\n  \"firstname\": \"Michelle\",\r\n  \"lastname\": \"Muster\",\r\n  \"address\": \"Bahnhofstrasse 7\",\r\n  \"zip_code\": \"8034\",\r\n  \"city\": \"Zurich\",\r\n  \"email\": \"email@gmx.ch\",\r\n  \"gender\": \"female\",\r\n  \"shop_user_id\": 123456789,\r\n  \"language\": \"de\"\r\n}\r\n"
-        },
-        {
-            "id": "cf502120-34c9-ad7b-3b5f-ac8c7c7ddb2e",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-groups",
-            "preRequestScript": "",
-            "pathVariables": {},
-            "method": "GET",
-            "data": [],
-            "dataMode": "params",
-            "version": 2,
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {},
-            "time": 1453128316741,
             "name": "/online-filters/{filter_id}/online-groups",
-            "description": "List a filter's online groups",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab"
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-groups",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "online-filters",
+                        "44444444-aaaa-4444-aaaa-444444444444",
+                        "online-groups"
+                    ]
+                },
+                "description": "List a filter's online groups"
+            },
+            "response": []
         },
         {
-            "id": "d3e4762c-0933-066d-935e-082899bb3298",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/wines",
-            "pathVariables": {},
-            "preRequestScript": "",
-            "method": "GET",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "data": [],
-            "dataMode": "params",
-            "name": "/wines",
-            "description": "List wines",
-            "descriptionFormat": "html",
-            "time": 1453128603372,
-            "version": 2,
-            "responses": [],
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {}
-        },
-        {
-            "id": "d3fff2a4-54ca-ed8d-b7e9-fd78ec28aeeb",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-publications",
-            "pathVariables": {},
-            "preRequestScript": "",
-            "method": "GET",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "data": [],
-            "dataMode": "params",
             "name": "/online-filters/{filter_id}/online-publications",
-            "description": "List a filter's online publications",
-            "descriptionFormat": "html",
-            "time": 1453128434165,
-            "version": 2,
-            "responses": [],
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {}
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/online-filters/44444444-aaaa-4444-aaaa-444444444444/online-publications",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "online-filters",
+                        "44444444-aaaa-4444-aaaa-444444444444",
+                        "online-publications"
+                    ]
+                },
+                "description": "List a filter's online publications"
+            },
+            "response": []
         },
         {
-            "id": "f7d365a3-8238-6006-0a67-bcad63327f64",
-            "headers": "Accept: application/json\nAccept-Language: de\n",
-            "url": "{{base_url}}/wines/012345/appraisals",
-            "pathVariables": {},
-            "preRequestScript": "",
-            "method": "GET",
-            "collectionId": "c0734860-8e32-d965-2e84-508790cea2ab",
-            "data": [],
-            "dataMode": "params",
-            "name": "/wines/{article_id}/appraisals",
-            "description": "List a wine's appraisals",
-            "descriptionFormat": "html",
-            "time": 1453128672605,
-            "version": 2,
-            "responses": [],
-            "tests": "",
-            "currentHelper": "normal",
-            "helperAttributes": {}
+            "name": "/online-filters",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/online-filters?type=promotion",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "online-filters"
+                    ],
+                    "query": [
+                        {
+                            "key": "type",
+                            "value": "promotion"
+                        }
+                    ]
+                },
+                "description": "List online filters"
+            },
+            "response": []
+        },
+        {
+            "name": "/stores",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/stores",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "stores"
+                    ]
+                },
+                "description": "List stores"
+            },
+            "response": []
+        },
+        {
+            "name": "/store-filters",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/store-filters",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "store-filters"
+                    ]
+                },
+                "description": "List store filters"
+            },
+            "response": []
+        },
+        {
+            "name": "/banners",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Accept-Language",
+                        "value": "de"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/banners",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "banners"
+                    ]
+                },
+                "description": "List banners"
+            },
+            "response": []
         }
     ]
 }

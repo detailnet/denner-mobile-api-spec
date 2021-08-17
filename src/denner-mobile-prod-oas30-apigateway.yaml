@@ -4,26 +4,26 @@ info:
   description: "Denner Mobile Services"
   version: "2021-06-17T11:43:46Z"
 servers:
-- url: "https://denner-mobile-api.detailnet.ch/{basePath}"
-  variables:
-    basePath:
-      default: "/v1"
+  - url: "https://denner-mobile-api.detailnet.ch/{basePath}"
+    variables:
+      basePath:
+        default: "/v1"
 paths:
   /online-filters:
     get:
       parameters:
-      - name: "f.types"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "sort"
-        in: "query"
-        schema:
-          type: "string"
+        - name: "f.types"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "sort"
+          in: "query"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -36,6 +36,7 @@ paths:
                 type: "string"
           content: {}
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -52,23 +53,22 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "5mah0t"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
-        - "method.request.querystring.f.types"
-        - "method.request.querystring.sort"
+          - "method.request.header.Accept-Language"
+          - "method.request.querystring.f.types"
+          - "method.request.querystring.sort"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /online-filters/{filter_id}/online-groups:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "filter_id"
-        in: "path"
-        required: true
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "filter_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -84,6 +84,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlineGroups:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -101,26 +102,25 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "xogyxl"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
-        - "method.request.path.filter_id"
+          - "method.request.header.Accept-Language"
+          - "method.request.path.filter_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /online-filters/{filter_id}/online-publications:
     get:
       parameters:
-      - name: "f.online_group"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "filter_id"
-        in: "path"
-        required: true
-        schema:
-          type: "string"
+        - name: "f.online_group"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "filter_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -136,6 +136,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listOnlinePublications:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -153,18 +154,17 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "upft64"
         cacheKeyParameters:
-        - "method.request.querystring.f.online_group"
-        - "method.request.header.Accept-Language"
-        - "method.request.path.filter_id"
+          - "method.request.querystring.f.online_group"
+          - "method.request.header.Accept-Language"
+          - "method.request.path.filter_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wine-filters:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -180,6 +180,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWineFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -196,16 +197,15 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "wzjy2x"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
+          - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /food-matches:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -221,6 +221,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:denner-mobile-api-${stageVariables.lambda_env}_listFoodMatches:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -234,14 +235,13 @@ paths:
             \r\n}"
         passthroughBehavior: "when_no_templates"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /store-filters:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -257,6 +257,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStoreFilters:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -272,40 +273,39 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "uu7ssu"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
+          - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /stores:
     get:
       parameters:
-      - name: "sort"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "page_size"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.open"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.channel"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "page"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.services"
-        in: "query"
-        schema:
-          type: "string"
+        - name: "sort"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "page_size"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.open"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.channel"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "page"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.services"
+          in: "query"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -321,6 +321,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listStores:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -337,78 +338,77 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "mqzsio"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
-        - "method.request.querystring.page"
-        - "method.request.querystring.page_size"
-        - "method.request.querystring.sort"
-        - "method.request.querystring.f.services"
-        - "method.request.querystring.f.channel"
-        - "method.request.querystring.f.open"
+          - "method.request.header.Accept-Language"
+          - "method.request.querystring.page"
+          - "method.request.querystring.page_size"
+          - "method.request.querystring.sort"
+          - "method.request.querystring.f.services"
+          - "method.request.querystring.f.channel"
+          - "method.request.querystring.f.open"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wines:
     get:
       parameters:
-      - name: "f.id"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.promotion_type"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.price_to"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "f.country"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.fits_with"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.price_from"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "search"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "sort"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "page_size"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.region"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.type"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "page"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.awards"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "f.barcodes"
-        in: "query"
-        schema:
-          type: "string"
+        - name: "f.id"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.promotion_type"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.price_to"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "f.country"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.fits_with"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.price_from"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "search"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "sort"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "page_size"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.region"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.type"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "page"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.awards"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "f.barcodes"
+          in: "query"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -424,6 +424,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listWines:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -441,34 +442,33 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "r7ulbu"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
-        - "method.request.querystring.sort"
-        - "method.request.querystring.page_size"
-        - "method.request.querystring.page"
-        - "method.request.querystring.f.type"
-        - "method.request.querystring.f.region"
-        - "method.request.querystring.f.promotion_type"
-        - "method.request.querystring.f.price_to"
-        - "method.request.querystring.f.price_from"
-        - "method.request.querystring.f.id"
-        - "method.request.querystring.f.fits_with"
-        - "method.request.querystring.f.country"
-        - "method.request.querystring.f.barcodes"
-        - "method.request.querystring.f.awards"
-        - "method.request.querystring.search"
+          - "method.request.header.Accept-Language"
+          - "method.request.querystring.sort"
+          - "method.request.querystring.page_size"
+          - "method.request.querystring.page"
+          - "method.request.querystring.f.type"
+          - "method.request.querystring.f.region"
+          - "method.request.querystring.f.promotion_type"
+          - "method.request.querystring.f.price_to"
+          - "method.request.querystring.f.price_from"
+          - "method.request.querystring.f.id"
+          - "method.request.querystring.f.fits_with"
+          - "method.request.querystring.f.country"
+          - "method.request.querystring.f.barcodes"
+          - "method.request.querystring.f.awards"
+          - "method.request.querystring.search"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /banners:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
-      - name: "f.platforms"
-        in: "query"
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
+        - name: "f.platforms"
+          in: "query"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -484,6 +484,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.banners_api}-${stageVariables.lambda_env}_listBanners:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -502,17 +503,16 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "3eh9mc"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
-        - "method.request.querystring.f.platforms"
+          - "method.request.header.Accept-Language"
+          - "method.request.querystring.f.platforms"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /featured-articles:
     get:
       parameters:
-      - name: "Accept-Language"
-        in: "header"
-        schema:
-          type: "string"
+        - name: "Accept-Language"
+          in: "header"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -528,6 +528,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.mobile_api}-${stageVariables.lambda_env}_listFeaturedArticles:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -544,9 +545,8 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "4eqjip"
         cacheKeyParameters:
-        - "method.request.header.Accept-Language"
+          - "method.request.header.Accept-Language"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /sweepstake-participants:
     post:
       requestBody:
@@ -569,6 +569,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveSweepstakeParticipant:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -584,23 +585,22 @@ paths:
             },\r\n  \"participant_data\": $input.json('$')\r\n}"
         passthroughBehavior: "when_no_match"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
   /wines/{article_id}/appraisals:
     get:
       parameters:
-      - name: "page_size"
-        in: "query"
-        schema:
-          type: "string"
-      - name: "article_id"
-        in: "path"
-        required: true
-        schema:
-          type: "string"
-      - name: "page"
-        in: "query"
-        schema:
-          type: "string"
+        - name: "page_size"
+          in: "query"
+          schema:
+            type: "string"
+        - name: "article_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+        - name: "page"
+          in: "query"
+          schema:
+            type: "string"
       responses:
         "200":
           description: "200 response"
@@ -613,6 +613,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_listAppraisals:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -629,16 +630,15 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "in1e07"
         cacheKeyParameters:
-        - "method.request.path.article_id"
+          - "method.request.path.article_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
     post:
       parameters:
-      - name: "article_id"
-        in: "path"
-        required: true
-        schema:
-          type: "string"
+        - name: "article_id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
       responses:
         "422":
           description: "422 response"
@@ -650,6 +650,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
       x-amazon-apigateway-integration:
+        type: "aws"
         httpMethod: "POST"
         uri: "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:802555642192:function:${stageVariables.appraisals_api}-${stageVariables.lambda_env}_saveAppraisal:${stageVariables.lambda_alias}/invocations"
         responses:
@@ -667,9 +668,8 @@ paths:
         passthroughBehavior: "when_no_match"
         cacheNamespace: "in1e07"
         cacheKeyParameters:
-        - "method.request.path.article_id"
+          - "method.request.path.article_id"
         contentHandling: "CONVERT_TO_TEXT"
-        type: "aws"
 components:
   schemas:
     Empty:
