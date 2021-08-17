@@ -6,7 +6,6 @@ info:
   contact:
     name: DETAIL NET
     email: support+denner-mobile-api@detailnet.ch
-host: denner-mobile-api-v2.detailnet.ch
 # In Swagger definition is not possible to define multiple servers/hosts/basepth (ref https://swagger.io/docs/specification/2-0/api-host-and-base-path/)
 #on migration to OpenApi standard, define servers:
 #servers:
@@ -16,6 +15,10 @@ host: denner-mobile-api-v2.detailnet.ch
 #    description: ApiGateway (production)
 #  - url: https://denner-mobile-api-v2.detailnet.ch
 #    description: ClodFront (production)
+
+# Because AWL will use DENNER CPI, the ClodFront deployment for V2 will never be used, therefore giving API gateway route
+host: denner-mobile-api.detailnet.ch
+basePath: /v2
 schemes:
   - https
 consumes:

@@ -10,7 +10,7 @@
     "version" : "2.0.0"
   },
   "servers" : [ {
-    "url" : "https://denner-mobile-api-v1.detailnet.ch/"
+    "url" : "https://denner-mobile-api.detailnet.ch/v2"
   } ],
   "paths" : {
     "/stores" : {
