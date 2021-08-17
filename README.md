@@ -51,3 +51,13 @@ Once installed, `openapi.json` can be generated as follows:
 The file will be located at `docs/openapi.json`.
 
 You can then review the changes in the local browser (`lando start` and then view http://denner-mobile-api-spec.detailnet.me/) and commit them.
+
+#### Compiling Stylesheets
+
+To compile the stylesheets for the swagger docs, globally install npm sass with `install -g sass` and run sass:
+
+        sass docs/style/main.scss docs/swagger-ui.css --style=compressed
+
+For continuous watch and build during development run:
+
+        sass docs/style/main.scss docs/swagger-ui.css --watch

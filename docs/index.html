@@ -1,4 +1,3 @@
-<!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,8 +5,8 @@
     <title>Denner Mobile API Documentation</title>
     <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
     <link rel="icon" type="image/x-ico; charset=binary" href="favicon.ico">
-<!--    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />-->
-<!--    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />-->
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
     <style>
       html
       {
@@ -31,7 +30,17 @@
     </style>
   </head>
 
-  <body>
+  <body class="swagger-section">
+
+  <div id='header'>
+    <div class="swagger-ui header">
+      <div class="wrapper">
+        <img id="logo" src="denner_logo.svg" alt="Denner">
+      </div>
+    </div>
+  </div>
+
+  <div id="message-bar" class="swagger-ui-wrap" data-sw-translate>&nbsp;</div>
     <div id="swagger-ui"></div>
 
     <script src="./swagger-ui-bundle.js" charset="UTF-8"> </script>
