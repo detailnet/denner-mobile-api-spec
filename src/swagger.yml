@@ -1350,6 +1350,18 @@ definitions:
         type: string
         description: >
           Price information as displayed to users (localized, e.g. "Konkurrenzvergleich")
+      price_override:
+        type: string
+        description: >
+          Price text when price is not numeric (only for ad-hoc article, localized, e.g. "ab 2 Stück")
+      validity_disclaimer:
+        type: string
+        description: >
+          Localized disclaimer (only for ad-hoc article, localized, e.g. "Auch auf bestehende Aktionspreise!\nNicht mit anderen Gutscheinen und Bonus kumulierbar")
+      mobile_link:
+        type: string
+        description: >
+          Internal mobile url instead of details page (only for ad-hoc article, e.g. "dennermobile://?page=promotions&categoryid=daa2a370-7db7-1740-a7c8-1ff93a39f613")
       unit_price_info:
         type: string
         description: >

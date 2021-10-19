@@ -1658,6 +1658,18 @@
             "type" : "string",
             "description" : "Price information as displayed to users (localized, e.g. \"Konkurrenzvergleich\")\n"
           },
+          "price_override" : {
+            "type" : "string",
+            "description" : "Price text when price is not numeric (only for ad-hoc article, localized, e.g. \"ab 2 Stück\")\n"
+          },
+          "validity_disclaimer" : {
+            "type" : "string",
+            "description" : "Localized disclaimer (only for ad-hoc article, localized, e.g. \"Auch auf bestehende Aktionspreise!\\nNicht mit anderen Gutscheinen und Bonus kumulierbar\")\n"
+          },
+          "mobile_link" : {
+            "type" : "string",
+            "description" : "Internal mobile url instead of details page (only for ad-hoc article, e.g. \"dennermobile://?page=promotions&categoryid=daa2a370-7db7-1740-a7c8-1ff93a39f613\")\n"
+          },
           "unit_price_info" : {
             "type" : "string",
             "description" : "Unit price information as displayed to users (localized, e.g. \"Einzelflasche: 9.90 statt 11.40\")\n"

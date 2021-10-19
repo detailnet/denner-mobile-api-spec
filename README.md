@@ -50,6 +50,8 @@ Once installed, `openapi.json` can be generated as follows:
         
 The file will be located at `docs/openapi.json`.
 
+**Important: after generation revert the servers section at beginning of `docs/openapi.json`**
+
 You can then review the changes in the local browser (`lando start` and then view http://denner-mobile-api-spec.detailnet.me/) and commit them.
 
 #### Compiling Stylesheets
