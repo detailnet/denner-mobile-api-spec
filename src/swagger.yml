@@ -635,7 +635,7 @@ parameters:
     in: path
     type: string
     required: true
-    pattern: '/^[a-f0-9]{8}\-[a-f0-9]{4}\-4[a-f0-9]{3}\-(8|9|a|b)[a-f0-9]{3}\-[a-f0-9]{12}$/'
+    pattern: '^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-(8|9|a|b)[a-f0-9]{3}-[a-f0-9]{12}$'
   ArticleIdPathParam:
     name: article_id
     description: The unique identifier of an article
@@ -1354,10 +1354,6 @@ definitions:
         type: string
         description: >
           Price text when price is not numeric (only for ad-hoc article, localized, e.g. "ab 2 Stück")
-      validity_disclaimer:
-        type: string
-        description: >
-          Localized disclaimer (only for ad-hoc article, localized, e.g. "Auch auf bestehende Aktionspreise!\nNicht mit anderen Gutscheinen und Bonus kumulierbar")
       mobile_link:
         type: string
         description: >
@@ -1366,6 +1362,8 @@ definitions:
         type: string
         description: >
           Unit price information as displayed to users (localized, e.g. "Einzelflasche: 9.90 statt 11.40")
+          OR (for ad-hoc article)
+          Localized disclaimer (localized, e.g. "Auch auf bestehende Aktionspreise!\nNicht mit anderen Gutscheinen und Bonus kumulierbar")
       dots:
         $ref: '#/definitions/Dots'
       stopper:
@@ -1400,6 +1398,13 @@ definitions:
       compared:
         type: boolean
         description: Is the article's price compared to an offer from an other company?
+      online_group:
+        type: array
+        items:
+          $ref: '#/definitions/UUIDv4'
+        description: >
+          List of online groupIds, a normal article has only one possible online-group
+          An ad-hoc article might have more than one.
       cooling:
         $ref: '#/definitions/Cooling'
       eco_labels:
