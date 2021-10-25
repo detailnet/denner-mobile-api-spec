@@ -1413,6 +1413,11 @@ definitions:
         $ref: '#/definitions/Packshot'
       wine:
         $ref: '#/definitions/ArticleWine'
+      sort_index:
+        type: integer
+        format: int32
+        minimum: 0
+        description: Display order
 
   ### Featured online publication article
   FeaturedArticle:

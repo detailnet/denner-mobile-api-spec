@@ -1721,6 +1721,12 @@
           },
           "wine" : {
             "$ref" : "#/components/schemas/ArticleWine"
+          },
+          "sort_index" : {
+            "minimum" : 0,
+            "type" : "integer",
+            "description" : "Display order",
+            "format" : "int32"
           }
         }
       },
