@@ -1169,6 +1169,8 @@ definitions:
   Packshot:
     type: object
     properties:
+      cdn_url:
+        $ref: '#/definitions/Url'
       image_url:
         $ref: '#/definitions/Url'
 
@@ -1398,12 +1400,12 @@ definitions:
       compared:
         type: boolean
         description: Is the article's price compared to an offer from an other company?
-      online_group:
+      online_group_ids:
         type: array
         items:
           $ref: '#/definitions/UUIDv4'
         description: >
-          List of online groupIds, a normal article has only one possible online-group
+          List of online group IDs, a normal article has only one possible online-group
           An ad-hoc article might have more than one.
       cooling:
         $ref: '#/definitions/Cooling'
