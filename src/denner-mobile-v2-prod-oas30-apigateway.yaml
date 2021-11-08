@@ -2,7 +2,7 @@ openapi: "3.0.1"
 info:
   title: "denner-mobile-v2"
   description: "Denner Mobile Services V2 (for AWL)"
-  version: "2021-08-17T08:13:22Z"
+  version: "2021-11-08T08:58:01Z"
 servers:
   - url: "https://denner-mobile-api.detailnet.ch/{basePath}"
     variables:
@@ -46,8 +46,8 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
-            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            ,\r\n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
             \r\n}"
         passthroughBehavior: "when_no_match"
         cacheNamespace: "5mah0t"
@@ -94,9 +94,9 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
-            \n  \"online_filter_id\": \"$input.params().path.get('filter_id')\",\r\
-            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            ,\r\n  \"online_filter_id\": \"$input.params().path.get('filter_id')\"\
+            ,\r\n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
             \r\n}"
         passthroughBehavior: "when_no_match"
         cacheNamespace: "xogyxl"
@@ -146,8 +146,8 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
-            \n  \"query\": \"f.filters=$input.params().path.get('filter_id')&#foreach($paramName\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            ,\r\n  \"query\": \"f.filters=$input.params().path.get('filter_id')&#foreach($paramName\
             \ in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
             \r\n}"
         passthroughBehavior: "when_no_match"
@@ -190,8 +190,8 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\r\
-            \n}"
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            \r\n}"
         passthroughBehavior: "when_no_match"
         cacheNamespace: "uu7ssu"
         cacheKeyParameters:
@@ -254,8 +254,8 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
-            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            ,\r\n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
             \r\n}"
         passthroughBehavior: "when_no_match"
         cacheNamespace: "mqzsio"
@@ -349,8 +349,8 @@ paths:
               method.response.header.Vary: "'Accept-Language'"
         requestTemplates:
           application/json: "#set($queryParams = $input.params().querystring)\r\n\
-            {\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\",\r\
-            \n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
+            {\r\n  \"version\": \"v2\",\r\n  \"locale\": \"$input.params().header.get('Accept-Language')\"\
+            ,\r\n  \"query\": \"#foreach($paramName in $queryParams.keySet())$paramName=$util.escapeJavaScript($queryParams.get($paramName))#if($foreach.hasNext)&#end#end\"\
             \r\n}"
         passthroughBehavior: "when_no_match"
         cacheNamespace: "4eqjip"
