@@ -1388,9 +1388,18 @@ definitions:
         type: object
         description: Texts for information about limited availability
         properties:
+          region_code:
+            type: string
+            description: Region code, combination of letters "DFI" (up to 2), one of "D", "DF", "DI", "F", "FI" or "I"
           region:
             type: string
             description: Region availability as displayed to users (localized)
+          store_codes:
+            type: array
+            description: Store availability codes, 1 = "fresh bread", 2 = "fresh products", 3 = "humidor", 4 = "limited avaiability"
+            items:
+              type: integer
+              format: int32
           store:
             type: string
             description: Store availability as displayed to users (localized)
@@ -1435,6 +1444,10 @@ definitions:
       title:
         type: string
         description: Public title as displayed to users (localized)
+      design:
+        type: string
+        description: Design of publication any of "promotion","weekend" or "special"
+#         pattern: '/^(promotion|weekend|special)$/'
       validity:
         $ref: '#/definitions/Validity'
       articles:
