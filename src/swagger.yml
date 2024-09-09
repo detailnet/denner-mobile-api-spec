@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   description: RESTful API for the Denner Mobile App
-  version: 2.1.0
+  version: 2.2.0
   title: Denner Mobile Web Service
   contact:
     name: DETAIL NET
@@ -310,6 +310,8 @@ paths:
                   promoted: true
                   compared: true
                   cooling: 0
+                  legal_warning: "none"
+                  legal_texts: null
                   eco_labels:
                     -
                       id: "66d94617-bbd7-477e-ae66-183deb67ba5b"
@@ -477,6 +479,8 @@ paths:
                       promoted: true
                       compared: true
                       cooling: 0
+                      legal_warning: "none"
+                      legal_texts: null
                       eco_labels:
                         -
                           id: "66d94617-bbd7-477e-ae66-183deb67ba5b"
@@ -642,7 +646,7 @@ parameters:
     in: path
     type: string
     required: true
-    pattern: '/^\d{6}$/'
+    pattern: '^\d{6}$'
   SearchParam:
     name: search
     description: Search text
@@ -661,7 +665,7 @@ parameters:
     name: Accept-Language
     in: header
     type: string
-#    pattern: '/^(de|fr|it)$/'
+#    pattern: '^(de|fr|it)$'
     required: false
     default: de
     description: >
@@ -686,7 +690,7 @@ definitions:
   ### Common
   UUIDv4:
     type: string
-    pattern: '/^[a-f0-9]{8}\-[a-f0-9]{4}\-4[a-f0-9]{3}\-(8|9|a|b)[a-f0-9]{3}\-[a-f0-9]{12}$/'
+    pattern: '^[a-f0-9]{8}\-[a-f0-9]{4}\-4[a-f0-9]{3}\-(8|9|a|b)[a-f0-9]{3}\-[a-f0-9]{12}$'
     description: Unique identifier
 
   Country:
@@ -694,7 +698,7 @@ definitions:
     properties:
       id:
         type: string
-        pattern: '/^[A-Z]{2}$/'
+        pattern: '^[A-Z]{2}$'
         description: Country code definition from ISO 3166
       title:
         type: string
@@ -708,7 +712,7 @@ definitions:
 
   Time:
     type: string
-    pattern: '/^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/'
+    pattern: '^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$'
     description: 'Time; Format HH:MM:SS'
 
   DayOfWeek:
@@ -755,6 +759,20 @@ definitions:
     format: int32
     minimum: 0
     description: Cooling type (0 = no cooling, 1 = refrigerated, 2 = frozen)
+
+  LegalWarning:
+    type: string
+    enum:
+      - none
+      - deadly-smoking
+      - tobacco-cancerous
+      - dangerous-tobacco-and-addictive
+      - dangerous-and-addictive
+      - dangerous-smoking
+      - driving-compromised
+      - unhealthy-and-addictive
+      - unhealthy
+    description: Indicates which legal warning info must be displayed
 
   Validity:
     type: object
@@ -909,7 +927,7 @@ definitions:
         description: Canton (state) code
       country:
         type: string
-        pattern: '/^[A-Z]{2}$/'
+        pattern: '^[A-Z]{2}$'
         description: Country code definition from ISO 3166
       phone:
         $ref: '#/definitions/Phone'
@@ -997,7 +1015,7 @@ definitions:
 
   PaymentType:
     type: string
-    pattern: '/^(cash|euro|maestro|post")$/' # @todo Needed?
+    pattern: '^(cash|euro|maestro|post")$' # @todo Needed?
     description: Payment type
 
   OpeningTime:
@@ -1338,7 +1356,7 @@ definitions:
         $ref: '#/definitions/UUIDv4'
       article_id:
         type: string
-        pattern: '/^\d{6}$/'
+        pattern: '^\d{6}$'
         description: Navision article code
       title:
         type: string
@@ -1418,6 +1436,11 @@ definitions:
           An ad-hoc article might have more than one.
       cooling:
         $ref: '#/definitions/Cooling'
+      legal_warning:
+        $ref: '#/definitions/LegalWarning'
+      legal_texts:
+        type: string
+        description: Mandatory text to display with article with 10% of advertising area (localized)
       eco_labels:
         $ref: '#/definitions/EcoLabels'
       packshot:
@@ -1447,7 +1470,7 @@ definitions:
       design:
         type: string
         description: Design of publication any of "promotion","weekend" or "special"
-#         pattern: '/^(promotion|weekend|special)$/'
+#         pattern: '^(promotion|weekend|special)$'
       validity:
         $ref: '#/definitions/Validity'
       articles:

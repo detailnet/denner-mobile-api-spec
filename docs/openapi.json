@@ -7,7 +7,7 @@
       "name" : "DETAIL NET",
       "email" : "support+denner-mobile-api@detailnet.ch"
     },
-    "version" : "2.1.0"
+    "version" : "2.2.0"
   },
   "servers" : [ {
     "url" : "https://denner-mobile-api.detailnet.ch/{apiGatewayPath}",
@@ -418,6 +418,7 @@
                     "promoted" : true,
                     "compared" : true,
                     "cooling" : 0,
+                    "legal_warning" : "none",
                     "eco_labels" : [ {
                       "id" : "66d94617-bbd7-477e-ae66-183deb67ba5b",
                       "code" : "bio"
@@ -677,6 +678,7 @@
                       "promoted" : true,
                       "compared" : true,
                       "cooling" : 0,
+                      "legal_warning" : "none",
                       "eco_labels" : [ {
                         "id" : "66d94617-bbd7-477e-ae66-183deb67ba5b",
                         "code" : "bio"
@@ -879,7 +881,7 @@
   "components" : {
     "schemas" : {
       "UUIDv4" : {
-        "pattern" : "/^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$/",
+        "pattern" : "^[a-f0-9]{8}\\-[a-f0-9]{4}\\-4[a-f0-9]{3}\\-(8|9|a|b)[a-f0-9]{3}\\-[a-f0-9]{12}$",
         "type" : "string",
         "description" : "Unique identifier"
       },
@@ -887,7 +889,7 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "pattern" : "/^[A-Z]{2}$/",
+            "pattern" : "^[A-Z]{2}$",
             "type" : "string",
             "description" : "Country code definition from ISO 3166"
           },
@@ -904,7 +906,7 @@
         "format" : "date"
       },
       "Time" : {
-        "pattern" : "/^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/",
+        "pattern" : "^([0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$",
         "type" : "string",
         "description" : "Time; Format HH:MM:SS"
       },
@@ -938,6 +940,11 @@
         "type" : "number",
         "description" : "Cooling type (0 = no cooling, 1 = refrigerated, 2 = frozen)",
         "format" : "int32"
+      },
+      "LegalWarning" : {
+        "type" : "string",
+        "description" : "Indicates which legal warning info must be displayed",
+        "enum" : [ "none", "deadly-smoking", "tobacco-cancerous", "dangerous-tobacco-and-addictive", "dangerous-and-addictive", "dangerous-smoking", "driving-compromised", "unhealthy-and-addictive", "unhealthy" ]
       },
       "Validity" : {
         "type" : "object",
@@ -1092,7 +1099,7 @@
             "description" : "Canton (state) code"
           },
           "country" : {
-            "pattern" : "/^[A-Z]{2}$/",
+            "pattern" : "^[A-Z]{2}$",
             "type" : "string",
             "description" : "Country code definition from ISO 3166"
           },
@@ -1209,7 +1216,7 @@
         }
       },
       "PaymentType" : {
-        "pattern" : "/^(cash|euro|maestro|post\")$/",
+        "pattern" : "^(cash|euro|maestro|post\")$",
         "type" : "string",
         "description" : "Payment type"
       },
@@ -1642,7 +1649,7 @@
             "$ref" : "#/components/schemas/UUIDv4"
           },
           "article_id" : {
-            "pattern" : "/^\\d{6}$/",
+            "pattern" : "^\\d{6}$",
             "type" : "string",
             "description" : "Navision article code"
           },
@@ -1715,6 +1722,13 @@
           },
           "cooling" : {
             "$ref" : "#/components/schemas/Cooling"
+          },
+          "legal_warning" : {
+            "$ref" : "#/components/schemas/LegalWarning"
+          },
+          "legal_texts" : {
+            "type" : "string",
+            "description" : "Mandatory text to display with article with 10% of advertising area (localized)"
           },
           "eco_labels" : {
             "$ref" : "#/components/schemas/EcoLabels"
@@ -2063,7 +2077,7 @@
         "style" : "simple",
         "explode" : false,
         "schema" : {
-          "pattern" : "/^\\d{6}$/",
+          "pattern" : "^\\d{6}$",
           "type" : "string"
         }
       },
